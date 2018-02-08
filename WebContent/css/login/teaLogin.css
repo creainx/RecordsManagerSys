@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+
+body{
+	background-color: #e6ebf1;
+}
+
+.login_area{
+	width: 400px;
+	height: 270px;
+	box-shadow: 0 0 8px #0066CC;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -200px;
+	margin-top: -300px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.login_tit{
+	text-align: center;
+	font-size: 32px;
+	color: #333333;
+	height: 80px;
+	line-height: 80px;
+}
+
+.login_form{
+	width: 100%;
+	height: 190px;/*login_area - login_tit*/
+	margin: 0px auto;
+}
+
+
+
+.input_line{
+	width: 280px;
+	height: 35px;
+	margin: 3px auto;
+}
+
+.login_alertLine{
+	font-size: 12px;
+	color: red;
+	margin: 5px auto;
+	height: 20px;
+	width: 280px;
+}
+
+.txt_input{
+	width: 94%;
+	height: 100%;
+	font-size: 15px;
+	border-radius: 5px;
+	padding: 0px 3%;
+	box-shadow: 0 0 4px grey;
+	border: 0;
+}
+
+.btn_line{
+	width: 200px;
+	height: 40px;
+	margin: 0px auto;
+}
+
+.btn_login{
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: 0;
+	color: white;
+	font-size: 17px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	letter-spacing: 0.8px;
+	border-radius: 5px;
+	border: 1px green solid;
+	background-image: linear-gradient(-180deg, #00FF7F 0%, #28a745 90%);
+	/*transition: background-color 0.3s, color 0.3s;*/
+	cursor: pointer;
+}
+
+.btn_login:hover{
+	border: 1px green solid;
+	
+	background-image: linear-gradient(-180deg, #28a745 0%, #28a745 90%);
+}
+
+
+.login_loading{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url("/RecordsManagerSys/img/loading.gif") no-repeat center center;
+	background-color: rgba(0,0,0,0.2);
+	display: none;
+
+}

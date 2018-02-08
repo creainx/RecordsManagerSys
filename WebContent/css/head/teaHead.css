@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.teaHead{
+	width: 100%;
+	height: 40px;
+	box-shadow: 0 0 4px grey;
+	background-color: white;
+	z-index: 100;
+}
+
+.mid_head{
+	width: 1000px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+.left_headMenu,.right_headMenu{
+	overflow: hidden;
+	width: 400px;
+	list-style-type: none;
+	margin: 0px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.left_headMenu{
+	float: left;
+}
+.right_headMenu{
+	float: right;
+}
+
+.menu_item{
+	height: 100%;
+	padding: 0px 12px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	color: #333333;
+	font-size: 15px;
+}
+
+.menu_item:hover{
+	transition: background-color 0.3s, color 0.3s;
+	color: #FF0033;
+}
+
+.left_headMenu .menu_item{
+	float: left;
+}
+.right_headMenu .menu_item{
+	float: right;
+}
