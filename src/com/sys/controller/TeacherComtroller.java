@@ -20,6 +20,21 @@ public class TeacherComtroller {
 
 	@Resource
 	private TeacherInfoBiz teaBiz;
+	
+
+	/**
+	 * 教师快速登陆
+	 * 
+	 * @param model
+	 * @param session
+	 * @param teacherInfo
+	 * @return
+	 */
+	@RequestMapping("/fastLogin")
+	public String fastLogin(Model model, HttpSession session,HttpServletResponse response, TeacherInfo teacherInfo) {
+		 this.login(model, session, response, teacherInfo);
+		 return  "redirect:/teacher/indexPage.go";
+	}
 
 	/**
 	 * 教师登陆

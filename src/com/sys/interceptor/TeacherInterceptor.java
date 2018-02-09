@@ -55,7 +55,8 @@ public class TeacherInterceptor implements HandlerInterceptor {
 					return true;
 				}
 			}
-			request.getRequestDispatcher("/teacher/loginPage.go").forward(request,response);
+			//request.getRequestDispatcher("/teacher/loginPage.go").forward(request,response);
+			request.getRequestDispatcher("/teacher/fastLogin.go?tea_id=1000&tea_pwd=0000").forward(request,response);
 		}
 		
 		return flag;

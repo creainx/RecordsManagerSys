@@ -5,6 +5,20 @@ html, body {
 	height: 100%;
 }
 
+
+.m_area_partition,.m_area_partition_notTop{
+	margin-bottom: 25px;
+	background-color: white;
+	border: 1px #e6ebf1 solid;
+}
+
+.m_area_partition_notTop{
+	border-left: 1px #CCCCCC solid;
+	border-right: 1px #CCCCCC solid;
+	border-bottom: 1px #CCCCCC solid;
+	
+}
+
 .m_format_body {
 	margin: 0px;
 	padding: 0px;

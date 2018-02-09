@@ -1,13 +1,8 @@
 @charset "UTF-8";
 /*#e6ebf1*/
+/*#00a1d6*/
 body {
 	background-color: rgb(250, 250, 250);
-}
-
-.area_partition {
-	border: 1px #CCCCCC solid;
-	margin-bottom: 25px;
-	background-color: white;
 }
 
 .mid_main {
@@ -22,6 +17,7 @@ body {
 	width: 100%;
 	height: 150px;
 	border-bottom: 1px #e6ebf1 solid;
+	background: url("/RecordsManagerSys/img/sys_logo.png") no-repeat center center;
 }
 
 .main_nav {
@@ -32,6 +28,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	list-style-type: none;
+	user-select: none;
 }
 
 .nav_item {
@@ -52,10 +49,8 @@ body {
 
 .hint_line {
 	height: 2px;
-	width: 80px;
 	background-color: #FF0033;
 	position: absolute;
-	left: 550px;
 	margin-top: -1px;
 }
 
@@ -64,8 +59,7 @@ body {
 }
 
 .main_info_area {
-	height: 800px;
-	width: 680px;
+	width: 690px;
 	float: left;
 }
 

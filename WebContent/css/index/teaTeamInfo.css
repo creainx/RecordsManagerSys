@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+.teamGroup_listAll {
+	width: 690px;
+	background-color: white;
+	float: left;
+}
+
+.team_rigth_area {
+	float: right;
+	width: 280px;
+	padding: 0px 5px 5px;
+}
+
+.team_title, .team_grouptitle {
+	font-size: 18px;
+	height: 23px;
+	line-height: 23px; 
+	font-family: "微软雅黑";
+	font-weight: bold;
+	color: #333333;
+	overflow: hidden;
+	user-select: none;
+	padding: 12px 0px;
+	font-family: "微软雅黑"
+}
+
+.team_grouptitle {
+	cursor: pointer;
+}
+
+.team_title {
+	cursor: default;
+}
+
+.teamInfo_item {
+	width: 135px;
+	height: 45px;
+	line-height: 45px;
+	margin: 15px 15px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	font-size: 16px;
+	user-select: none;
+}
+
+.team_group {
+	margin: 0px 15px;
+}
+
+.team_group:not(:last-child) {
+	border-bottom: 1px rgba(200,200,200,0.5) solid;
+	margin: 0px 15px;
+}
+
+
+.newTeamInfo {
+	color: #0066CC;
+	box-shadow: 0px 0px 1px 1px #0066CC;
+}
+
+.oldTeamInfo {
+	color: #333333;
+	box-shadow: 0px 0px 1px 1px #333333;
+}
+
+.addTeamInfo {
+	color: #00CC00;
+	border: 1px #00CC00 dashed;
+	line-height: 55px;
+	font-size: 55px;
+	text-align: center;
+}
+
+.newTeamInfo:hover {
+	color: #FF0033;
+	box-shadow: 0px 0px 3px 1px #FF0033;
+}
+
+.oldTeamInfo:hover {
+	color: black;
+	box-shadow: 0px 0px 3px 1px black;
+}
+
+.addTeamInfo:hover {
+	box-shadow: 0px 0px 3px 1px #00CC00;
+}
+
+.groupName {
+	float: left;
+	user-select: none;
+}
+
+.groupUnfoldShrink {
+	float: right;
+	width: 34px;
+	height: 34px;
+	background: url("/RecordsManagerSys/img/unfoldAndshrink.png") no-repeat;
+	background-size: 200%;
+	background-position: 6px 5px;
+	cursor: pointer;
+}
+
+.default_shrink_group_teamList, .shrink_group_teamList {
+	overflow: hidden;
+	padding: 0px 15px 15px;
+}
+
+.shrink_group_teamList {
+	display: none;
+}
+
+.tea_team_tool, .tea_team_report {
+	width: 100%;
+	background-color: white;
+}
+
+.tea_team_tool {
+	
+}
+
+
+.tool_item_line {
+	border-bottom: 1px #e6ebf1 solid;
+	overflow: hidden;
+}
+
+
+.tool_area{
+	width: 100%;
+	margin: 10px;
+	cursor: pointer;
+}
+.tool_area_separate {
+	float: left;
+	width: 120px;
+	margin: 10px;
+}
+
+.tool_area .toolImg{
+	width: 30px;
+	height: 30px;
+}
+
+.tool_area_separate .toolImg{
+	width: 25px;
+	height: 25px;
+}
+.tool_area .toolName{
+	font-size: 15px;
+}
+
+.tool_area_separate .toolName{
+	font-size: 14px;
+}
+.toolImg {
+	vertical-align: middle;
+}
+
+.toolName {
+	margin-left: 5px;
+	color: #333333;
+	letter-spacing: 0.8px;
+	cursor: pointer;
+}
+
+.tool_area_separate .toolName:hover {
+	color: #00a1d6;
+}
+
+.tool_area:hover .toolName{
+	color: #00a1d6;
+}
+
+.tool_area_separateBorder {
+	width: 119px;
+	border-right: 1px #e6ebf1 solid;
+}

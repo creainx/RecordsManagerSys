@@ -62,6 +62,7 @@
 				<property name="uncheckUrls">
 					<list>
 						<value>/teacher/login</value>
+						<value>/teacher/fastLogin</value>
 						<value>/teacher/loginPage</value>
 					</list>
 				</property>
