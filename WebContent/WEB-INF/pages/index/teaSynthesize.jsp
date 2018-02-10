@@ -1,12 +1,12 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css"
-	href="${applicationScope.css}/index/teaTeamInfo.css" />
+	href="${applicationScope.css}/index/teaSynthesize.css" />
 <script type="text/javascript"
-	src="${applicationScope.js}/index/teaTeamInfo.js"></script>
+	src="${applicationScope.js}/index/teaSynthesize.js"></script>
 <div class="m_overHien">
 	<div class="teamGroup_listAll m_area_partition">
 		<div class="team_group">
-			<div class="team_title">默认分组</div>
+			<div class="team_title">置顶</div>
 			<div class="default_shrink_group_teamList">
 				<div class="teamInfo_item newTeamInfo">Y2E404</div>
 				<div class="teamInfo_item newTeamInfo">Y2E404</div>
@@ -124,50 +124,7 @@
 	</div>
 </div>
 <style>
-.task_alert {
-	padding: 12px 12px 0px;
-}
 
-.tea_team_report {
-	
-}
-
-.report_title {
-	font-size: 18px;
-	height: 23px;
-	line-height: 23px;
-	font-family: "微软雅黑";
-	font-weight: bold;
-	color: #333333;
-	overflow: hidden;
-	user-select: none;
-	font-family: "微软雅黑";
-}
-
-.task_list {
-	padding: 0px;
-}
-
-.task_item {
-	padding: 10px 0px;
-	cursor: pointer;
-	font-size: 13px;
-	color: #FF0033;
-}
-
-.taskTitle {
-	color: #0066CC;
-	margin-left: 5px;
-	cursor: pointer;
-}
-
-.task_item:not(:last-child){
-	border-bottom: 1px rgba(200,200, 200, 0.5) solid;
-}
-
-.taskTitle:hover{
-	color: #FF0033;
-}
 </style>
 <script type="text/javascript">
 	

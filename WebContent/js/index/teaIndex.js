@@ -36,6 +36,9 @@ $(document).ready(function() {
 		});
 		
 		
-		
+		$("#main_nav .nav_item").click(function () {
+			var eId = $(event.currentTarget).attr("id");
+			window.location = "http://localhost:8080/RecordsManagerSys/teacher/indexPage.go?sel_navId=" + eId;
+		});
 
 });

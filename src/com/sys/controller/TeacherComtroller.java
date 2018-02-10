@@ -94,12 +94,29 @@ public class TeacherComtroller {
 	}
 
 	@RequestMapping("/indexPage")
-	public String goIndexPage(Model model, HttpSession session) {
+	public String goIndexPage(String sel_navId,Model model, HttpSession session) {
+		model.addAttribute("sel_navId",sel_navId);
 		return "index/teaIndex";
 	}
 	
-	@RequestMapping("/getTeamInfo")
-	public String getTeamInfo(Model model, HttpSession session) {
-		return "index/teaTeamInfo";
+	@RequestMapping("/teamInfoPage")
+	public String goTeamInfoPage(String selTeamId,Model model, HttpSession session) {
+		model.addAttribute("sel_navId","nav_teamInfo");
+		model.addAttribute("selTeamId",selTeamId);
+		return "index/teaIndex";
 	}
+	
+	@RequestMapping("/getTeaSynthesize")
+	public String getTeamInfo(Model model, HttpSession session) {
+		return "index/teaSynthesize";
+	}
+	
+
+	@RequestMapping("/getTeaTeam")
+	public String getTeaTeam(Model model,String selTeamId, HttpSession session) {
+		model.addAttribute("selTeamId",selTeamId);
+		return "index/teaTeam";
+	}
+	
+	
 }
