@@ -1,4 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <link rel="stylesheet" type="text/css"
 	href="${applicationScope.css}/index/teaTeam.css" />
 <script type="text/javascript"
@@ -16,68 +18,28 @@
 	<div class="m_area_partition">
 		<div class="grayTit">班级管理菜单</div>
 		<ul class="m_area_partition m_format_ul m_overHien">
-			<li class="teamBiz_menu_item">
-				<img class="teamBiz_menuImg"  src="${applicationScope.proName}/img/task_logo.png"/>
-				<label>发布班级作业</label>
+			<li class="teamBiz_menu_item"><img class="teamBiz_menuImg"
+				src="${applicationScope.proName}/img/task_logo.png" /> <label>发布班级作业</label>
 			</li>
-			<li class="teamBiz_menu_item">
-				<img class="teamBiz_menuImg" src="${applicationScope.proName}/img/examLogo.png"/>
-				<label>发布班级考试</label>
+			<li class="teamBiz_menu_item"><img class="teamBiz_menuImg"
+				src="${applicationScope.proName}/img/examLogo.png" /> <label>发布班级考试</label>
 			</li>
 		</ul>
 	</div>
 	<div class="teamGroup_listAll m_area_partition">
-	
-		<div class="teamGroup_item">
-			<div class="groupName">
-				<label class="m_float_left">S1E</label>
-				<div class="groupUnfoldShrink"></div>
+		<c:forEach items="${groupList }" var="i">
+			<div class="teamGroup_item">
+				<div class="groupName">
+					<label class="m_float_left">${i.tg_name}</label>
+					<div class="groupUnfoldShrink"></div>
+				</div>
+				<ul class="teamGroup_list m_format_ul">
+					<c:forEach items="${i.teamInfoList }" var="i">
+						<li data-team_id="${i.team_id }" class="li_teamName">${i.team_name }</li>
+					</c:forEach>
+				</ul>
 			</div>
-			<ul class="teamGroup_list m_format_ul">
-				<li data-team_id="1" class="li_teamName">Y2E404</li>
-				<li data-team_id="2" class="li_teamName">Y2E404</li>
-				<li data-team_id="3" class="li_teamName">Y2E404</li>
-				<li data-team_id="4" class="li_teamName">Y2E404</li>
-			</ul>
-		</div>
-		
-		<div class="teamGroup_item">
-			<div class="groupName">
-				<label class="m_float_left">S2E</label>
-				<div class="groupUnfoldShrink"></div>
-			</div>
-			<ul class="teamGroup_list m_format_ul">
-				<li data-team_id="5" class="li_teamName">Y2E404</li>
-				<li data-team_id="6" class="li_teamName">Y2E404</li>
-				<li data-team_id="7" class="li_teamName">Y2E404</li>
-				<li data-team_id="8" class="li_teamName">Y2E404</li>
-				<li data-team_id="9" class="li_teamName">Y2E404</li>
-				<li data-team_id="10" class="li_teamName">Y2E404</li>
-				<li data-team_id="somevalue" class="li_teamName">Y2E404</li>
-			</ul>
-		</div>
-		
-		<div class="teamGroup_item">
-			<div class="groupName">
-				<label class="m_float_left">Y2E</label>
-				<div class="groupUnfoldShrink"></div>
-			</div>
-			<ul class="teamGroup_list m_format_ul">
-				<li data-team_id="somevalue" class="li_teamName">Y2E404</li>
-				<li data-team_id="somevalue" class="li_teamName">Y2E404</li>
-			</ul>
-		</div>
-		
-		<div class="teamGroup_item">
-			<div class="groupName">
-				<label class="m_float_left">学士后</label>
-				<div class="groupUnfoldShrink"></div>
-			</div>
-			<ul class="teamGroup_list m_format_ul">
-				<li data-team_id="1" class="li_teamName">Y2E404</li>
-			</ul>
-		</div>
-
+		</c:forEach>
 	</div>
 	<div id="teamDetailedInfo" class="teamDetailedInfo m_area_partition">
 		<div class="selTeamName">Y2E404</div>
@@ -115,30 +77,93 @@
 		</div>
 	</div>
 </div>
+<div class="m_transparencyDarkBody">
+	<div class="add_student_div m_area_partition">
+		<div class="grayTit">批量学生添加</div>
+		<div class="m_overHien">
+			<div class="stu_list">
+				<div class="prepareAddStuList">
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+					<div class="prepareStudentInfo">ZHANGSAN</div>
+				</div>
+				<div class="div_addAllArea">
+					<input class="add_student" type="button" value="全部添加"/>
+				</div>
+			</div>
+			<div class="addStuWin"></div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
 
 <style type="text/css">
+.add_student_div{
+	width: 550px;
+	position: relative;
+	left: 50%;
+	margin-left: -275px;
+	margin-top: 80px;
+	background-color: rgb(230, 230, 230);
+}
 
+.stu_list{
+	width: 149px;
+	height: 600px;
+	float: left;
+	border-right: 1px #CCCCFF solid;
+}
+
+.addStuWin{
+	width: 400px;
+	height: 600px;
+	height: 100%;
+	float: right;
+}
+
+.prepareAddStuList{
+	width: 100%;
+	height: 560px;
+	overflow: auto;
+}
+
+.prepareStudentInfo{
+	width: 100%;
+	height: 30px;
+	margin: 5px 0px;
+	border-bottom: 1px gray solid;
+}
+.div_addAllArea{
+	width: 100%;
+	height: 40px;
+	background-color: green;
+}
 </style>
 <script type="text/javascript">
-	(function () {
-		var sel_teamName_id = '${requestScope.selTeamId}';
-		var item = null;
-		if(sel_teamName_id == ""){
-			item = $(".li_teamName").eq(0);
-		}else{
-			item = $(".li_teamName[data-team_id="+ sel_teamName_id +"]");
-		}
-		item.addClass("sel_li_teamName");
-		item.removeClass("li_teamName");
-	})();
 	
-	$(".li_teamName").click(function () {
-		var item = $(event.currentTarget);
-		var selTeamId = item.data("team_id");
-		window.location = "http://localhost:8080/RecordsManagerSys/teacher/teamInfoPage.go?selTeamId=" +selTeamId;
-	});
+	(function() {
+		
+	})();
+
+	
 </script>
 
 

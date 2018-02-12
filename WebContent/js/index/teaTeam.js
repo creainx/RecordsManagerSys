@@ -1,4 +1,27 @@
 $(document).ready(function() {
+	
+	function addTeamNameStyle(item) {
+		item.addClass("sel_li_teamName");
+		item.removeClass("li_teamName");
+	}
+	
+	function removeTeamNameStyle() {
+		var item = $(".sel_li_teamName");
+		item.addClass("li_teamName");
+		item.removeClass("sel_li_teamName");
+	}
+	
+	$(".li_teamName").click(function() {
+		var item = $(event.currentTarget);
+		var selTeamId = item.data("team_id");
+		removeTeamNameStyle();
+		
+		var selItem = $(".li_teamName[data-team_id='" + selTeamId + "']");
+		addTeamNameStyle(selItem);
+	});
+	
+	addTeamNameStyle($(".li_teamName").eq(0));
+	
 	$("#teamDetailedInfo").bind("contextmenu", function() {
 		return false;
 	})
@@ -25,7 +48,7 @@ $(document).ready(function() {
 	});
 	
 	
-	$(".groupName").click(function() {
+	$(".groupName").dblclick(function() {
 		var teamList = $(event.currentTarget).nextAll(
 				".teamGroup_list");
 		if (teamList.css("display") == "block") {

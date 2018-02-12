@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" type="text/css"
 	href="${applicationScope.css}/index/teaSynthesize.css" />
 <script type="text/javascript"
@@ -8,56 +9,24 @@
 		<div class="team_group">
 			<div class="team_title">置顶</div>
 			<div class="default_shrink_group_teamList">
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
+				<c:forEach items="${topTeamList }" var="i">
+					<div class="teamInfo_item newTeamInfo">${i.team_name }</div>
+				</c:forEach>
 			</div>
 		</div>
-
-		<div class="team_group">
-			<div class="team_grouptitle">
-				<div class="groupName">S1班级</div>
-				<div class="groupUnfoldShrink"></div>
+		<c:forEach items="${groupList }" var="i">
+			<div class="team_group">
+				<div class="team_grouptitle">
+					<div class="groupName">${i.tg_name }</div>
+					<div class="groupUnfoldShrink"></div>
+				</div>
+				<div class="shrink_group_teamList">
+					<c:forEach items="${i.teamInfoList }" var="t">
+						<div class="teamInfo_item newTeamInfo">${t.team_name }</div>
+					</c:forEach>
+				</div>
 			</div>
-			<div class="shrink_group_teamList">
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-			</div>
-		</div>
-
-		<div class="team_group">
-			<div class="team_grouptitle">
-				<div class="groupName">S2班级</div>
-				<div class="groupUnfoldShrink"></div>
-			</div>
-			<div class="shrink_group_teamList">
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-			</div>
-		</div>
-
-		<div class="team_group">
-			<div class="team_grouptitle">
-				<div class="groupName">Y2班级</div>
-				<div class="groupUnfoldShrink"></div>
-			</div>
-			<div class="shrink_group_teamList">
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-				<div class="teamInfo_item newTeamInfo">Y2E404</div>
-			</div>
-		</div>
-
+		</c:forEach>
 	</div>
 	<div class="team_rigth_area">
 	

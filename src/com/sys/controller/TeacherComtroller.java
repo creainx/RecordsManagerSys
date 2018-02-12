@@ -1,17 +1,23 @@
 package com.sys.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.aliyuncs.http.HttpResponse;
-import com.sys.biz.TeacherInfoBiz;
+import com.sys.biz.TeaTeamGroupBiz;
+import com.sys.biz.TeacherBiz;
+import com.sys.entity.TeaTeamGroupInfo;
 import com.sys.entity.TeacherInfo;
+import com.sys.entity.TeamInfo;
 import com.sys.tool.ResultData;
 
 @Controller
@@ -19,7 +25,10 @@ import com.sys.tool.ResultData;
 public class TeacherComtroller {
 
 	@Resource
-	private TeacherInfoBiz teaBiz;
+	private TeacherBiz teaBiz;
+	
+	@Resource
+	private TeaTeamGroupBiz teaTeamGroupBiz;
 	
 
 	/**
@@ -85,7 +94,37 @@ public class TeacherComtroller {
 		System.out.println(resultData.jsonFormat());
 		return resultData.jsonFormat();
 	}
+	
 
+	@RequestMapping("/getTeaSynthesize")
+	public String getTeamInfo(Model model, HttpSession session) {
+		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
+		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
+		model.addAttribute("groupList", groupList);
+		
+		
+		
+		List<TeamInfo> topTeamList = new ArrayList<>();
+		for (TeaTeamGroupInfo groupInfo : groupList) {
+			for (TeamInfo teamInfo : groupInfo.getTeamInfoList()) {
+				if(teamInfo.getTeam_type() == 2) {
+					topTeamList.add(teamInfo);
+				}
+			}
+		}
+		model.addAttribute("topTeamList", topTeamList);
+		
+		return "index/teaSynthesize";
+	}
+
+	@RequestMapping("/getTeaTeam")
+	public String getTeaTeam(Model model, HttpSession session) {
+		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
+		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
+		model.addAttribute("groupList", groupList);
+		return "index/teaTeam";
+	}
+	
 	/* Ìø×ª½çÃæComtroller **************************************/
 
 	@RequestMapping("/loginPage")
@@ -106,17 +145,9 @@ public class TeacherComtroller {
 		return "index/teaIndex";
 	}
 	
-	@RequestMapping("/getTeaSynthesize")
-	public String getTeamInfo(Model model, HttpSession session) {
-		return "index/teaSynthesize";
-	}
 	
 
-	@RequestMapping("/getTeaTeam")
-	public String getTeaTeam(Model model,String selTeamId, HttpSession session) {
-		model.addAttribute("selTeamId",selTeamId);
-		return "index/teaTeam";
-	}
+
 	
 	
 }

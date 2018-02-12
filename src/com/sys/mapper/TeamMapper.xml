@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.TeamDao">
+
+	<resultMap id="BaseResultMap" type="com.sys.entity.TeamInfo">
+		<id column="team_id" property="team_id" />
+		<result column="team_name" property="team_name" />
+		<result column="team_state" property="team_state" />
+		<result column="team_type" property="team_type" />
+		<result column="team_date" property="team_date" />
+	</resultMap>
+
+</mapper>

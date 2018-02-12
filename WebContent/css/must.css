@@ -5,6 +5,15 @@ html, body {
 	height: 100%;
 }
 
+.m_transparencyDarkBody{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+}
 
 .m_area_partition,.m_area_partition_notTop{
 	margin-bottom: 16px;

@@ -4,15 +4,15 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.sys.biz.TeacherInfoBiz;
-import com.sys.dao.TeacherInfoDao;
+import com.sys.biz.TeacherBiz;
+import com.sys.dao.TeacherDao;
 import com.sys.entity.TeacherInfo;
 
 @Service
-public class TeacherInfoBizImpl implements TeacherInfoBiz{
+public class TeacherInfoBizImpl implements TeacherBiz{
 
 	@Resource
-	private TeacherInfoDao teacherDao;
+	private TeacherDao teacherDao;
 	
 	@Override
 	public TeacherInfo getTeacherInfoByTeaId(String teaId) {

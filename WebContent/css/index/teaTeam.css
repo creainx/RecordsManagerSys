@@ -35,7 +35,6 @@ body {
 
 .teamGroup_item{
 	border: 1px #e6ebf1 solid;
-
 }
 
 .li_teamName,.sel_li_teamName{
@@ -43,6 +42,13 @@ body {
 	font-size: 14px;
 	color: #333333;
 	cursor: pointer;
+	border-bottom: 1px #e6ebf1 solid;
+}
+
+.sel_li_teamName{
+	border-bottom: 1px #e6ebf1 solid;
+	background-color: #0066CC;
+	color: white;
 }
 
 .grayTit{
@@ -55,19 +61,11 @@ body {
     color: #333333;
     cursor: pointer;
 }
-.li_teamName:not(:last-child){
-	border-bottom: 1px #e6ebf1 solid;
-}
 
 .li_teamName:hover{
 	background-color: #FFFFCC;
 	color: #FF0033;
 	cursor: pointer;
-}
-
-.sel_li_teamName{
-	background-color: #0066CC;
-	color: white;
 }
 
 
@@ -123,6 +121,7 @@ body {
 	float: left;
 }
 .tea_team_tool{
+    width: 120px;
 	height: 32px;
 	margin: 8px 15px 8px 0px; 
 	float: right;
@@ -174,7 +173,7 @@ body {
 	background-color: rgb(250,250,250);
 }
 .add_student {
-	width: 120px;
+	width: 100%;
 	height: 100%;
 	color: white;
 	font-size: 15px;

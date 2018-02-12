@@ -1,8 +1,8 @@
-package com.sys.biz;
+package com.sys.dao;
 
 import com.sys.entity.TeacherInfo;
 
-public interface TeacherInfoBiz {
+public interface TeacherDao {
 	
 	public TeacherInfo getTeacherInfoByTeaId(String teaId);
 }
