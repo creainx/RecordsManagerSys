@@ -9,5 +9,17 @@
 		<result column="team_type" property="team_type" />
 		<result column="team_date" property="team_date" />
 	</resultMap>
-
+	
+	<resultMap id="FullResultMap" type="com.sys.entity.TeamInfo" extends="BaseResultMap">
+		<association property="teaTeamGroupInfo" resultMap="com.sys.dao.TeaTeamGroupDao.BaseResultMapAndTeaInfo"></association>
+		<collection property="teamMemberList" resultMap="com.sys.dao.StudentDao.FullResultMap"></collection>
+	</resultMap>
+	
+	<select id="getTeamInfoAllByTeamId" resultMap="FullResultMap">
+		select * from TeamInfo ti
+		inner join TeaTeamGroupInfo tgi on tgi.tg_id = ti.tg_id
+		inner join StudentInfo si on si.team_id = ti.team_id
+		where ti.team_id = #{teamId}
+	</select>
+	
 </mapper>

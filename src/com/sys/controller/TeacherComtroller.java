@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sys.biz.TeaTeamGroupBiz;
 import com.sys.biz.TeacherBiz;
+import com.sys.biz.TeamBiz;
+import com.sys.entity.StudentInfo;
 import com.sys.entity.TeaTeamGroupInfo;
 import com.sys.entity.TeacherInfo;
 import com.sys.entity.TeamInfo;
@@ -26,6 +28,9 @@ public class TeacherComtroller {
 
 	@Resource
 	private TeacherBiz teaBiz;
+	
+	@Resource
+	private TeamBiz teamBiz;
 	
 	@Resource
 	private TeaTeamGroupBiz teaTeamGroupBiz;
@@ -95,34 +100,42 @@ public class TeacherComtroller {
 		return resultData.jsonFormat();
 	}
 	
-
-	@RequestMapping("/getTeaSynthesize")
-	public String getTeamInfo(Model model, HttpSession session) {
+	@RequestMapping("/teaTeam")
+	public String getTeaTeam(String selTeamId,Model model, HttpSession session) {
+		
+		model.addAttribute("sel_navId","nav_teamInfo");
+		
 		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
 		model.addAttribute("groupList", groupList);
-		
-		
-		
-		List<TeamInfo> topTeamList = new ArrayList<>();
-		for (TeaTeamGroupInfo groupInfo : groupList) {
-			for (TeamInfo teamInfo : groupInfo.getTeamInfoList()) {
-				if(teamInfo.getTeam_type() == 2) {
-					topTeamList.add(teamInfo);
-				}
-			}
-		}
-		model.addAttribute("topTeamList", topTeamList);
-		
-		return "index/teaSynthesize";
+		model.addAttribute("selTeamId",selTeamId);
+		return "team/teaTeam";
 	}
-
-	@RequestMapping("/getTeaTeam")
-	public String getTeaTeam(Model model, HttpSession session) {
-		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
-		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
-		model.addAttribute("groupList", groupList);
-		return "index/teaTeam";
+	
+	
+	@RequestMapping("/getTeamMember")
+	public String getTeamMember(String teamId,Model model, HttpSession session) {
+		ResultData resultData = new ResultData();
+		
+		if(teamId != null) {
+			TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
+			
+			TeamInfo teamInfo = teamBiz.getTeamInfoAllByTeamId(teamId);
+			
+			//判断这个班级是否是当前老师的,防止修改JS、HTML代码导致的非法访问
+			if(teaInfo.getTea_id().equals(teamInfo.getTeaTeamGroupInfo().getTeaInfo().getTea_id())) {
+				List<StudentInfo> list = teamInfo.getTeamMemberList();
+				//model.addAttribute("teamMemberList", list);
+				resultData.setData(list);
+				resultData.setResult(true);
+			}else {
+				resultData.setErrorNum(4, "你没有访问此班级的权限");
+			}
+		}else {
+			resultData.setErrorNum(5);
+		}
+		model.addAttribute("resultData", resultData);
+		return "team/teaTeam_member";
 	}
 	
 	/* 跳转界面Comtroller **************************************/
@@ -134,8 +147,22 @@ public class TeacherComtroller {
 
 	@RequestMapping("/indexPage")
 	public String goIndexPage(String sel_navId,Model model, HttpSession session) {
-		model.addAttribute("sel_navId",sel_navId);
-		return "index/teaIndex";
+		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
+		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
+		model.addAttribute("groupList", groupList);
+		
+		List<TeamInfo> topTeamList = new ArrayList<>();
+		for (TeaTeamGroupInfo groupInfo : groupList) {
+			for (TeamInfo teamInfo : groupInfo.getTeamInfoList()) {
+				if(teamInfo.getTeam_type() == 2) {
+					topTeamList.add(teamInfo);
+				}
+			}
+		}
+		model.addAttribute("topTeamList", topTeamList);
+		
+		model.addAttribute("sel_navId","nav_synthesize");
+		return "index/teaSynthesize";
 	}
 	
 	@RequestMapping("/teamInfoPage")
@@ -144,10 +171,5 @@ public class TeacherComtroller {
 		model.addAttribute("selTeamId",selTeamId);
 		return "index/teaIndex";
 	}
-	
-	
-
-
-	
 	
 }

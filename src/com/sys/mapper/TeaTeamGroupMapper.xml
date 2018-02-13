@@ -16,6 +16,12 @@
 			resultMap="com.sys.dao.TeacherDao.BaseResultMap"></association>
 		<collection property="teamInfoList" resultMap="com.sys.dao.TeamDao.BaseResultMap"></collection>
 	</resultMap>
+	
+	<resultMap id="BaseResultMapAndTeaInfo" type="com.sys.entity.TeaTeamGroupInfo"
+		extends="BaseResultMap">
+		<association property="teaInfo"
+			resultMap="com.sys.dao.TeacherDao.BaseResultMap"></association>
+	</resultMap>
 
 	<select id="getTeacherTeamGroupList" resultMap="FullResultMap">
 		select ttg.*,ti.* from TeaTeamGroupInfo ttg

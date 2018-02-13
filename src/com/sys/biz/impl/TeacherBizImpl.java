@@ -9,7 +9,7 @@ import com.sys.dao.TeacherDao;
 import com.sys.entity.TeacherInfo;
 
 @Service
-public class TeacherInfoBizImpl implements TeacherBiz{
+public class TeacherBizImpl implements TeacherBiz{
 
 	@Resource
 	private TeacherDao teacherDao;

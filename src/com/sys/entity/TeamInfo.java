@@ -1,7 +1,13 @@
 package com.sys.entity;
 
 import java.util.Date;
+import java.util.List;
 
+/**
+ * 班级表
+ * @author Linz
+ *
+ */
 public class TeamInfo {
 
 	private String team_id;
@@ -9,8 +15,8 @@ public class TeamInfo {
 	private Integer team_state;
 	private Integer team_type;
 	private Date team_date;
+	private List<StudentInfo> teamMemberList;//学生列表
 	private TeaTeamGroupInfo teaTeamGroupInfo;
-	
 	public String getTeam_id() {
 		return team_id;
 	}
@@ -40,6 +46,12 @@ public class TeamInfo {
 	}
 	public void setTeam_date(Date team_date) {
 		this.team_date = team_date;
+	}
+	public List<StudentInfo> getTeamMemberList() {
+		return teamMemberList;
+	}
+	public void setTeamMemberList(List<StudentInfo> teamMemberList) {
+		this.teamMemberList = teamMemberList;
 	}
 	public TeaTeamGroupInfo getTeaTeamGroupInfo() {
 		return teaTeamGroupInfo;

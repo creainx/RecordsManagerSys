@@ -68,7 +68,6 @@ body {
 	cursor: pointer;
 }
 
-
 .teamGroup_list{
 	/*display: none;*/
 }
@@ -138,21 +137,27 @@ body {
 	margin: 0px 25px; 	
 
 }
-.team_memberItem{
+.header_team_memberItem,.team_memberItem{
 	height: 25px;
 	line-height: 25px;
 	padding: 8px;
 	border-top: 1px #e6ebf1 solid;
 	cursor: pointer;
 }
-
-.item_font_interval{
+.header_team_memberItem{
+	border: 0;
+}
+.header_item_font_interval,.item_font_interval{
 	color: #333333;
 	font-size: 14px;
 	display: inline-block;
 	width: 160px;
 	text-align: center;
 	cursor: pointer;
+	
+}
+.header_item_font_interval{
+	font-weight: bold;
 }
 
 .item_font_interval.m_c_green{
@@ -172,6 +177,7 @@ body {
 .team_memberItem:hover{
 	background-color: rgb(250,250,250);
 }
+
 .add_student {
 	width: 100%;
 	height: 100%;
@@ -208,3 +214,112 @@ body {
 	color:#FF0033;
 }
 
+.add_studentForm {
+	width: 780px;
+	float: right;
+	display: none;
+}
+
+.addStu_formLine {
+	height: 35px;
+	line-height: 35px;
+	margin: 15px;
+}
+
+.addStu_operation {
+	height: 35px;
+	line-height: 35px;
+	float: right;
+}
+
+.add_formText {
+	height: 28px;
+	width: 200px;
+	padding: 0px 5px;
+	border: 0px;
+	box-shadow: 0 0 4px grey;
+	border-radius: 5px;
+}
+
+.txt_id_prefix {
+	width: 50px;
+}
+
+.txt_addname {
+	width: 80px;
+}
+
+.btn_goon_add, .btn_exit_add {
+	width: 75px;
+	height: 30px;
+	color: white;
+	font-size: 14px;
+	border-radius: 3px;
+	/* outline: none; */
+	cursor: pointer;
+}
+
+.btn_goon_add {
+	background-image: linear-gradient(-180deg, #00FF7F 0%, #28a745 90%);
+	border: 1px #28a745 solid;
+}
+
+.btn_exit_add {
+	background-image: linear-gradient(-180deg, #FF6666 0%, #FF0033 90%);
+	border: 1px #FF0033 solid;
+}
+
+.add_studentForm {
+	width: 780px;
+	float: right;
+	display: none;
+}
+
+.addStu_formLine {
+	height: 35px;
+	line-height: 35px;
+	margin: 15px;
+}
+
+.addStu_operation {
+	height: 35px;
+	line-height: 35px;
+	float: right;
+}
+
+.add_formText {
+	height: 28px;
+	width: 200px;
+	padding: 0px 5px;
+	border: 0px;
+	box-shadow: 0 0 4px grey;
+	border-radius: 5px;
+}
+
+.txt_id_prefix {
+	width: 50px;
+}
+
+.txt_addname {
+	width: 80px;
+}
+
+.btn_goon_add, .btn_exit_add {
+	width: 75px;
+	height: 30px;
+	color: white;
+	font-size: 14px;
+	border-radius: 3px;
+	/* outline: none; */
+	cursor: pointer;
+}
+
+.btn_goon_add {
+	background-image: linear-gradient(-180deg, #00FF7F 0%, #28a745 90%);
+	border: 1px #28a745 solid;
+}
+
+.btn_exit_add {
+	background-image: linear-gradient(-180deg, #FF6666 0%, #FF0033 90%);
+	border: 1px #FF0033 solid;
+}
