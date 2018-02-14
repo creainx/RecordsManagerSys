@@ -29,6 +29,7 @@
 	float: left;
 	cursor: pointer;
 	transition: background-color 0.3s, color 0.3s;
+	color: #888888;
 }
 
 .nav_item:hover {

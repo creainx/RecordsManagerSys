@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tools.ant.taskdefs.Sleep;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,13 +29,12 @@ public class TeacherComtroller {
 
 	@Resource
 	private TeacherBiz teaBiz;
-	
+
 	@Resource
 	private TeamBiz teamBiz;
-	
+
 	@Resource
 	private TeaTeamGroupBiz teaTeamGroupBiz;
-	
 
 	/**
 	 * 教师快速登陆
@@ -45,9 +45,9 @@ public class TeacherComtroller {
 	 * @return
 	 */
 	@RequestMapping("/fastLogin")
-	public String fastLogin(Model model, HttpSession session,HttpServletResponse response, TeacherInfo teacherInfo) {
-		 this.login(model, session, response, teacherInfo);
-		 return  "redirect:/teacher/indexPage.go";
+	public String fastLogin(Model model, HttpSession session, HttpServletResponse response, TeacherInfo teacherInfo) {
+		this.login(model, session, response, teacherInfo);
+		return "redirect:/teacher/indexPage.go";
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class TeacherComtroller {
 	 */
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(Model model, HttpSession session,HttpServletResponse response, TeacherInfo teacherInfo) {
+	public String login(Model model, HttpSession session, HttpServletResponse response, TeacherInfo teacherInfo) {
 
 		ResultData resultData = new ResultData();
 
@@ -82,7 +82,7 @@ public class TeacherComtroller {
 					userCookie.setMaxAge(30 * 24 * 60 * 60); // 存活期为一个月 30*24*60*60
 					userCookie.setPath("/");
 					response.addCookie(userCookie);
-					
+
 				} else {
 					// error:2 密码错误
 					resultData.setErrorNum(2);
@@ -99,45 +99,44 @@ public class TeacherComtroller {
 		System.out.println(resultData.jsonFormat());
 		return resultData.jsonFormat();
 	}
-	
+
 	@RequestMapping("/teaTeam")
-	public String getTeaTeam(String selTeamId,Model model, HttpSession session) {
-		
-		model.addAttribute("sel_navId","nav_teamInfo");
-		
+	public String getTeaTeam(String selTeamId, Model model, HttpSession session) {
+
+		model.addAttribute("sel_navId", "nav_teamInfo");
+
 		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
 		model.addAttribute("groupList", groupList);
-		model.addAttribute("selTeamId",selTeamId);
+		model.addAttribute("selTeamId", selTeamId);
 		return "team/teaTeam";
 	}
-	
-	
+
 	@RequestMapping("/getTeamMember")
-	public String getTeamMember(String teamId,Model model, HttpSession session) {
+	public String getTeamMember(String teamId, Model model, HttpSession session) {
 		ResultData resultData = new ResultData();
+
+		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
+		TeamInfo teamInfo = teamBiz.getTeamInfoAllByTeamId(teamId);
 		
-		if(teamId != null) {
-			TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
-			
-			TeamInfo teamInfo = teamBiz.getTeamInfoAllByTeamId(teamId);
-			
-			//判断这个班级是否是当前老师的,防止修改JS、HTML代码导致的非法访问
-			if(teaInfo.getTea_id().equals(teamInfo.getTeaTeamGroupInfo().getTeaInfo().getTea_id())) {
-				List<StudentInfo> list = teamInfo.getTeamMemberList();
-				//model.addAttribute("teamMemberList", list);
-				resultData.setData(list);
+		if (teamInfo != null) {
+			// 判断这个班级是否是当前老师的,防止修改JS、HTML代码导致的非法访问
+			if (teaInfo.getTea_id().equals(teamInfo.getTeaTeamGroupInfo().getTeaInfo().getTea_id())) {
+				// List<StudentInfo> list = teamInfo.getTeamMemberList();
+				// model.addAttribute("teamMemberList", list);
+				resultData.setData(teamInfo);
 				resultData.setResult(true);
-			}else {
+			} else {
 				resultData.setErrorNum(4, "你没有访问此班级的权限");
 			}
-		}else {
+		} else {
 			resultData.setErrorNum(5);
 		}
 		model.addAttribute("resultData", resultData);
+
 		return "team/teaTeam_member";
 	}
-	
+
 	/* 跳转界面Comtroller **************************************/
 
 	@RequestMapping("/loginPage")
@@ -146,30 +145,30 @@ public class TeacherComtroller {
 	}
 
 	@RequestMapping("/indexPage")
-	public String goIndexPage(String sel_navId,Model model, HttpSession session) {
+	public String goIndexPage(String sel_navId, Model model, HttpSession session) {
 		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
 		model.addAttribute("groupList", groupList);
-		
+
 		List<TeamInfo> topTeamList = new ArrayList<>();
 		for (TeaTeamGroupInfo groupInfo : groupList) {
 			for (TeamInfo teamInfo : groupInfo.getTeamInfoList()) {
-				if(teamInfo.getTeam_type() == 2) {
+				if (teamInfo.getTeam_type() == 2) {
 					topTeamList.add(teamInfo);
 				}
 			}
 		}
 		model.addAttribute("topTeamList", topTeamList);
-		
-		model.addAttribute("sel_navId","nav_synthesize");
+
+		model.addAttribute("sel_navId", "nav_synthesize");
 		return "index/teaSynthesize";
 	}
-	
+
 	@RequestMapping("/teamInfoPage")
-	public String goTeamInfoPage(String selTeamId,Model model, HttpSession session) {
-		model.addAttribute("sel_navId","nav_teamInfo");
-		model.addAttribute("selTeamId",selTeamId);
+	public String goTeamInfoPage(String selTeamId, Model model, HttpSession session) {
+		model.addAttribute("sel_navId", "nav_teamInfo");
+		model.addAttribute("selTeamId", selTeamId);
 		return "index/teaIndex";
 	}
-	
+
 }

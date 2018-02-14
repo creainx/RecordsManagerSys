@@ -2,74 +2,76 @@
 /*#e6ebf1*/
 /*#00a1d6*/
 body {
-    background-color: rgb(250, 250, 250);
-    user-select: none;
+	background-color: rgb(250, 250, 250);
+	user-select: none;
 }
+
 .teamGroup_listAll {
 	width: 200px;
 	float: left;
 	user-select: none;
 }
 
-.groupName{
+.groupName {
 	height: 20px;
 	line-height: 20px;
 	padding: 5px;
 	font-size: 18px;
 	font-weight: bold;
 	border-bottom: 1px #e6ebf1 solid;
-	background-color: rgb(245,245,245);
-	color: #333333;
+	background-color: rgb(245, 245, 245);
+	color: #666666;
 	cursor: pointer;
 }
 
 .groupUnfoldShrink {
-    float: right;
-    width: 20px;
-    height: 20px;
-    background: url(/RecordsManagerSys/img/unfoldAndshrink.png) no-repeat;
-    background-size: 200%;
-    background-position: -22px 6px;
-    cursor: pointer;
+	float: right;
+	width: 20px;
+	height: 20px;
+	background: url(/RecordsManagerSys/img/unfoldAndshrink.png) no-repeat;
+	background-size: 200%;
+	background-position: -22px 6px;
+	cursor: pointer;
 }
 
-.teamGroup_item{
+.teamGroup_item {
 	border: 1px #e6ebf1 solid;
 }
 
-.li_teamName,.sel_li_teamName{
-	padding: 5px 8px;
+.li_teamName, .sel_li_teamName {
+	padding: 10px 8px;
 	font-size: 14px;
-	color: #333333;
+	color: #444444;
 	cursor: pointer;
 	border-bottom: 1px #e6ebf1 solid;
 }
 
-.sel_li_teamName{
+.sel_li_teamName {
 	border-bottom: 1px #e6ebf1 solid;
 	background-color: #0066CC;
 	color: white;
 }
 
-.grayTit{
+.grayTit {
 	height: 20px;
-    line-height: 20px;
-    padding: 5px;
-    font-size: 14px;
-    border-bottom: 1px #e6ebf1 solid;
-    background-color: rgb(245,245,245);
-    color: #333333;
-    cursor: pointer;
+	line-height: 20px;
+	padding: 5px;
+	font-size: 14px;
+	border-bottom: 1px #e6ebf1 solid;
+	background-color: rgb(245, 245, 245);
+	color: #444444;
+	cursor: pointer;
 }
 
-.li_teamName:hover{
+.li_teamName:hover {
 	background-color: #FFFFCC;
 	color: #FF0033;
 	cursor: pointer;
 }
 
-.teamGroup_list{
+.teamGroup_list {
 	/*display: none;*/
+	
 }
 
 .ul_member_menu {
@@ -97,15 +99,13 @@ body {
 	color: #CC0033;
 }
 
-
-
-.teamDetailedInfo{
+.teamDetailedInfo {
 	width: 780px;
 	float: right;
 }
 
-.team_member_tit{
-	color: #333333;
+.team_member_tit {
+	color: #444444;
 	font-size: 20px;
 	font-weight: bold;
 	height: 48px;
@@ -114,68 +114,74 @@ body {
 	margin: 0px;
 	padding: 0px;
 }
-.team_member_titFont{
-	margin-left: 25px; 
+
+.team_member_titFont {
+	margin-left: 25px;
 	height: 100%;
 	float: left;
 }
-.tea_team_tool{
-    width: 120px;
+
+.tea_team_tool {
+	width: 120px;
 	height: 32px;
-	margin: 8px 15px 8px 0px; 
+	margin: 8px 15px 8px 0px;
 	float: right;
 }
-.selTeamName{
-	color: #333333;
+
+.selTeamName {
+	color: #444444;
 	font-size: 38px;
 	font-weight: bold;
 	padding: 15px;
 	margin: 0px;
 	border-bottom: 1px #e6ebf1 solid;
 }
-.team_memberList{
-	margin: 0px 25px; 	
 
+.team_memberList {
+	margin: 0px 25px;
 }
-.header_team_memberItem,.team_memberItem{
+
+.header_team_memberItem, .team_memberItem {
 	height: 25px;
 	line-height: 25px;
 	padding: 8px;
 	border-top: 1px #e6ebf1 solid;
 	cursor: pointer;
 }
-.header_team_memberItem{
+
+.header_team_memberItem {
 	border: 0;
 }
-.header_item_font_interval,.item_font_interval{
-	color: #333333;
+
+.header_item_font_interval, .item_font_interval {
+	color: #444444;
 	font-size: 14px;
 	display: inline-block;
 	width: 160px;
 	text-align: center;
 	cursor: pointer;
-	
 }
-.header_item_font_interval{
+
+.header_item_font_interval {
 	font-weight: bold;
 }
 
-.item_font_interval.m_c_green{
+.item_font_interval.m_c_green {
 	color: #339933;
 }
 
 .item_font_interval 
 
-.sle_team_memberItem{
+.sle_team_memberItem {
 	background-color: #FFFFCC;
 }
 
-.sle_team_memberItem .item_font_interval{
+.sle_team_memberItem .item_font_interval {
 	color: #FF0033;
 }
 
-.team_memberItem:hover{
-	background-color: rgb(250,250,250);
+.team_memberItem:hover {
+	background-color: rgb(250, 250, 250);
 }
 
 .add_student {
@@ -195,23 +201,25 @@ body {
 	background-image: linear-gradient(-180deg, #66CC00 0%, #28a745 90%);
 }
 
-.teamBiz_menuImg{
+.teamBiz_menuImg {
 	vertical-align: middle;
 	height: 35px;
 }
-.teamBiz_menu_item{
+
+.teamBiz_menu_item {
 	padding: 13px;
 	float: left;
 	cursor: pointer;
 }
 
-.teamBiz_menu_item label{
+.teamBiz_menu_item label {
 	cursor: pointer;
-	font-size: 14px;	
+	font-size: 14px;
+	color: #555555;
 }
 
-.teamBiz_menu_item:hover{
-	color:#FF0033;
+.teamBiz_menu_item:hover label {
+	color: #FF0033;
 }
 
 .add_studentForm {

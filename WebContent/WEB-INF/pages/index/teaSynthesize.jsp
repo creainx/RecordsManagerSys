@@ -24,7 +24,7 @@
 					<div class="team_title">置顶</div>
 					<div class="default_shrink_group_teamList">
 						<c:forEach items="${topTeamList }" var="i">
-							<div class="teamInfo_item newTeamInfo">${i.team_name }</div>
+							<div class="teamInfo_item" data-team_id="${i.team_id }">${i.team_name }</div>
 						</c:forEach>
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 						</div>
 						<div class="shrink_group_teamList">
 							<c:forEach items="${i.teamInfoList }" var="t">
-								<div class="teamInfo_item newTeamInfo">${t.team_name }</div>
+								<div class="teamInfo_item" data-team_id="${t.team_id }" >${t.team_name }</div>
 							</c:forEach>
 						</div>
 					</div>

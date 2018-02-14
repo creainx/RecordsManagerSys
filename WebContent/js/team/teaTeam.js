@@ -1,11 +1,12 @@
 $(document).ready(function() {
 	
-	$(".li_teamName").click(function() {
+	$(".tag_teamName").click(function() {
 		var item = $(event.currentTarget);
 		var selTeamId = item.data("team_id");
 		removeTeamNameStyle();
 		var selItem = $(".li_teamName[data-team_id='" + selTeamId + "']");
 		addTeamNameStyle(selItem);
+		loadTeamInfoByteamId(selTeamId);
 	});
 	
 	
@@ -35,16 +36,19 @@ $(document).ready(function() {
 	});
 	
 	
-	$(".groupName").dblclick(function() {
-		var teamList = $(event.currentTarget).nextAll(
-				".teamGroup_list");
+	$(".groupUnfoldShrink").click(function() {
+		
+		var item = $(event.currentTarget);
+		
+		var teamList = item.parent(".groupName").nextAll(".teamGroup_list");
+		
 		if (teamList.css("display") == "block") {
 			teamList.css("display", "none");
-			$(event.currentTarget).children(".groupUnfoldShrink").css(
+			item.css(
 					"backgroundPositionX", "4px");
 		} else {
 			teamList.css("display", "block");
-			$(event.currentTarget).children(".groupUnfoldShrink").css(
+			item.css(
 					"backgroundPositionX", "-22px");
 		}
 	});

@@ -48,7 +48,7 @@
 						</div>
 						<ul class="teamGroup_list m_format_ul">
 							<c:forEach items="${i.teamInfoList }" var="i">
-								<li class="li_teamName" data-team_id="${i.team_id }">${i.team_name }</li>
+								<li class="li_teamName tag_teamName" data-team_id="${i.team_id }">${i.team_name }</li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -79,24 +79,11 @@
 				</div>
 			</div>
 			<div id="teamDetailedInfo" class="teamDetailedInfo m_area_partition">
-				<div class="selTeamName">Y2E404</div>
-				<div class="team_member_tit">
-					<div class="team_member_titFont">
-						<input type="checkbox" />班级学生
-					</div>
-					<div class="tea_team_tool">
-						<input id="add_student" class="add_student" type="button"
-							value=添加学生 />
-					</div>
+				<div id="loading_teamInfo" class="loading_teamInfo">
+					加载中...
 				</div>
-				<div class="team_memberList">
-					<div class="header_team_memberItem">
-						<label class="header_item_font_interval">账号</label> <label
-							class="header_item_font_interval">姓名</label> <label
-							class="header_item_font_interval m_c_green">账号状态</label> <label
-							class="header_item_font_interval">操作</label>
-					</div>
-					<div id="loadarea_member"></div>
+				<div id="loadArea_member_list">
+				
 				</div>
 			</div>
 		</div>
@@ -105,38 +92,55 @@
 </html>
 
 <style type="text/css">
+
+.loading_teamInfo{
+	padding: 30px;
+	color: #999999;
+	font-size: 22px;
+}
+
+
 </style>
 <script type="text/javascript">
 	function addTeamNameStyle(item) {
 		item.addClass("sel_li_teamName");
 		item.removeClass("li_teamName");
 	}
-	
+
 	function removeTeamNameStyle() {
 		var item = $(".sel_li_teamName");
 		item.addClass("li_teamName");
 		item.removeClass("sel_li_teamName");
 	}
 	
-	//初始化
-	//1.绑定选中的班级
-	//2.加载选中班级的学生列表
-	(function () {
-		var selTeamId = '${requestScope.selTeamId}';
-		if(selTeamId == ""){
-			addTeamNameStyle($(".li_teamName").eq(0));
-		}else{
-			alert($(".li_teamName[data-team_id="+ selTeamId+"]").html());
-			addTeamNameStyle($(".li_teamName[data-team_id="+ selTeamId+"]"));
-		}
-		var loadTeamId = $(".sel_li_teamName").data("team_id");
-		
+	var loadingTime = null;
+	
+	function loadTeamInfoByteamId(loadTeamId) {
+		loadingTime = setTimeout(function () {
+			$("#loading_teamInfo").show();
+		},300);
+	
 		var url = "${applicationScope.proName}/teacher/getTeamMember.go";
 		var params = "teamId=" + loadTeamId;
 		$.post(url, params, function(ajaxData) {
-			$("#loadarea_member").append(ajaxData);
+			clearTimeout(loadingTime);
+			$("#loading_teamInfo").hide();
+			$("#loadArea_member_list").html(ajaxData);
 		});
-		
+	}
+
+	//初始化
+	//1.绑定选中的班级
+	//2.加载选中班级的学生列表
+	(function() {
+		var selTeamId = '${requestScope.selTeamId}';
+		if (selTeamId == "") {
+			addTeamNameStyle($(".li_teamName").eq(0));
+		} else {
+			addTeamNameStyle($(".li_teamName[data-team_id=" + selTeamId + "]"));
+		}
+		var loadTeamId = $(".sel_li_teamName").data("team_id");
+		loadTeamInfoByteamId(loadTeamId);
 	})();
 </script>
 

@@ -42,7 +42,7 @@ body {
 	line-height: 23px; 
 	font-family: "微软雅黑";
 	font-weight: bold;
-	color: #333333;
+	color: #666666;
 	overflow: hidden;
 	user-select: none;
 	padding: 12px 0px;
@@ -67,6 +67,8 @@ body {
 	text-align: center;
 	font-size: 16px;
 	user-select: none;
+	color: #0066CC;
+	box-shadow: 0px 0px 1px 1px #0066CC;
 }
 
 .team_group {
@@ -78,17 +80,6 @@ body {
 	margin: 0px 15px;
 }
 
-
-.newTeamInfo {
-	color: #0066CC;
-	box-shadow: 0px 0px 1px 1px #0066CC;
-}
-
-.oldTeamInfo {
-	color: #333333;
-	box-shadow: 0px 0px 1px 1px #333333;
-}
-
 .addTeamInfo {
 	color: #00CC00;
 	border: 1px #00CC00 dashed;
@@ -97,18 +88,9 @@ body {
 	text-align: center;
 }
 
-.newTeamInfo:hover {
+.teamInfo_item:hover {
 	color: #FF0033;
 	box-shadow: 0px 0px 3px 1px #FF0033;
-}
-
-.oldTeamInfo:hover {
-	color: black;
-	box-shadow: 0px 0px 3px 1px black;
-}
-
-.addTeamInfo:hover {
-	box-shadow: 0px 0px 3px 1px #00CC00;
 }
 
 .groupName {
@@ -184,7 +166,7 @@ body {
 
 .toolName {
 	margin-left: 5px;
-	color: #333333;
+	color: #666666;
 	letter-spacing: 0.8px;
 	cursor: pointer;
 }
@@ -215,7 +197,7 @@ body {
 	line-height: 23px;
 	font-family: "微软雅黑";
 	font-weight: bold;
-	color: #333333;
+	color: #666666;
 	overflow: hidden;
 	user-select: none;
 	font-family: "微软雅黑";

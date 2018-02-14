@@ -12,4 +12,12 @@ $(document).ready(function() {
 					"backgroundPositionX", "-39px");
 		}
 	});
+	
+	$(".teamInfo_item").click(function() {
+		var item = $(event.currentTarget);
+		var selTeamId = item.data("team_id");
+		var url = "http://localhost:8080/RecordsManagerSys/teacher/teaTeam.go";
+		var params = "?selTeamId=" + selTeamId;
+		window.location = url + params;
+	});
 });
