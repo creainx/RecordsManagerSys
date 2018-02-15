@@ -1,16 +1,16 @@
 package com.sys.text;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
 import com.sys.biz.TeaTeamGroupBiz;
+import com.sys.dao.TeaTaskTemplateGroupDao;
+import com.sys.entity.TeaTaskTemplateGroupInfo;
 import com.sys.entity.TeaTeamGroupInfo;
 import com.sys.tool.SpringTool;
 
 public class Wen_Test {
-
 	@Test
 	public void getTeacherTeamGroupList() {
 		TeaTeamGroupBiz teaTeamGroupBiz = SpringTool.getBean(TeaTeamGroupBiz.class);
@@ -22,4 +22,14 @@ public class Wen_Test {
 		}
 	}
 
+	@Test
+	public void getTeaTaskTemplateGroupList() {
+		TeaTaskTemplateGroupDao dao = SpringTool.getBean(TeaTaskTemplateGroupDao.class);
+		List<TeaTaskTemplateGroupInfo> list = dao.getTeaTaskTemplateGroupList("1000");
+		for (TeaTaskTemplateGroupInfo info : list) {
+			System.out.println("组名:" + info.getTg_name());
+			System.out.println("数量:" + info.getTeaTaskTemplateLibraryList().size());
+			System.out.println("================================");
+		}
+	}
 }

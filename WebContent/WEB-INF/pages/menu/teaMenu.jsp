@@ -27,14 +27,4 @@
 		$("#hint_line").css("left", line_left);
 		$("#hint_line").css("width", sel_item.css("width"));
 	}
-
-
-	(function() {
-		var selTeaNavId = '${requestScope.sel_navId}';
-		if (selTeaNavId != "") {
-			$(".nav_item_sel").removeClass("nav_item_sel");
-			$("#" + selTeaNavId).addClass("nav_item_sel");
-			
-		}
-	})();
 </script>

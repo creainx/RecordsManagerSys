@@ -59,5 +59,11 @@ public class TeamInfo {
 	public void setTeaTeamGroupInfo(TeaTeamGroupInfo teaTeamGroupInfo) {
 		this.teaTeamGroupInfo = teaTeamGroupInfo;
 	}
+	@Override
+	public String toString() {
+		return "TeamInfo [team_id=" + team_id + ", team_name=" + team_name + ", team_state=" + team_state
+				+ ", team_type=" + team_type + ", team_date=" + team_date + ", teamMemberList=" + teamMemberList
+				+ ", teaTeamGroupInfo=" + teaTeamGroupInfo + "]";
+	}
 	
 }

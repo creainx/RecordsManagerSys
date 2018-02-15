@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.TeaTaskTemplateLibraryDao">
+
+	<resultMap id="BaseResultMap" type="com.sys.entity.TeaTaskTemplateLibraryInfo">
+		<id column="tl_id" property="tl_id" />
+		<result column="tl_title" property="tl_title" />
+		<result column="tl_info" property="tl_info" />
+		<result column="tl_type" property="tl_type" />
+	</resultMap>
+	
+	<resultMap id="FullResultMap" type="com.sys.entity.TeaTaskTemplateLibraryInfo" extends="BaseResultMap">
+		<association property="teaTaskTemplateGroupInfo" resultMap="com.sys.dao.TeaTaskTemplateGroupDao.BaseResultMapAndTeaInfo"></association>
+	</resultMap>
+	
+</mapper>

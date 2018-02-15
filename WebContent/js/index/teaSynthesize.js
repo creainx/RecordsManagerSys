@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	
+	(function() {
+		$(".nav_item_sel").removeClass("nav_item_sel");
+		$("#nav_synthesize").addClass("nav_item_sel");
+	})();
+	
 	$(".shrink_group_teamList").prevAll(".team_grouptitle").click(function() {
 		var teamList = $(event.currentTarget).nextAll(
 				".shrink_group_teamList");

@@ -9,4 +9,6 @@ import com.sys.entity.TeaTeamGroupInfo;
 public interface TeaTeamGroupDao {
 	
 	public List<TeaTeamGroupInfo> getTeacherTeamGroupList(@Param("tea_id") String tea_id);
+	
+	
 }

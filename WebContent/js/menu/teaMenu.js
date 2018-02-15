@@ -45,5 +45,9 @@ $(document).ready(function() {
 	$("#nav_teamInfo").click(function () {
 		window.location = "http://localhost:8080/RecordsManagerSys/teacher/teaTeam.go";
 	});
+	
+	$("#nav_task").click(function () {
+		window.location = "http://localhost:8080/RecordsManagerSys/teacharTask/taskBiz.go";
+	});
 
 });

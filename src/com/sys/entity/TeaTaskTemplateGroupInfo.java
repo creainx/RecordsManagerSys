@@ -3,15 +3,14 @@ package com.sys.entity;
 import java.util.Date;
 import java.util.List;
 
-public class TeaTeamGroupInfo {
-
+public class TeaTaskTemplateGroupInfo {
 	private String tg_id;
 	private String tg_name;
 	private Integer tg_type;
 	private Integer tg_state;
 	private Date tg_date;
 	private TeacherInfo teaInfo;
-	private List<TeamInfo> teamInfoList;
+	private List<TeaTaskTemplateLibraryInfo> teaTaskTemplateLibraryList;
 	
 	public String getTg_id() {
 		return tg_id;
@@ -49,15 +48,17 @@ public class TeaTeamGroupInfo {
 	public void setTeaInfo(TeacherInfo teaInfo) {
 		this.teaInfo = teaInfo;
 	}
-	public List<TeamInfo> getTeamInfoList() {
-		return teamInfoList;
+	public List<TeaTaskTemplateLibraryInfo> getTeaTaskTemplateLibraryList() {
+		return teaTaskTemplateLibraryList;
 	}
-	public void setTeamInfoList(List<TeamInfo> teamInfoList) {
-		this.teamInfoList = teamInfoList;
+	public void setTeaTaskTemplateLibraryList(List<TeaTaskTemplateLibraryInfo> teaTaskTemplateLibraryList) {
+		this.teaTaskTemplateLibraryList = teaTaskTemplateLibraryList;
 	}
 	@Override
 	public String toString() {
-		return "TeaTeamGroupInfo [tg_id=" + tg_id + ", tg_name=" + tg_name + ", tg_type=" + tg_type + ", tg_state="
-				+ tg_state + ", tg_date=" + tg_date + ", teaInfo=" + teaInfo + ", teamInfoList=" + teamInfoList + "]";
+		return "TeaTaskTemplateGroupInfo [tg_id=" + tg_id + ", tg_name=" + tg_name + ", tg_type=" + tg_type
+				+ ", tg_state=" + tg_state + ", tg_date=" + tg_date + ", teaInfo=" + teaInfo
+				+ ", teaTaskTemplateLibraryList=" + teaTaskTemplateLibraryList + "]";
 	}
+	
 }

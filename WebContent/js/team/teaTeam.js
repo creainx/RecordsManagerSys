@@ -1,5 +1,10 @@
 $(document).ready(function() {
 	
+	(function() {
+		$(".nav_item_sel").removeClass("nav_item_sel");
+		$("#nav_teamInfo").addClass("nav_item_sel");
+	})();
+	
 	$(".tag_teamName").click(function() {
 		var item = $(event.currentTarget);
 		var selTeamId = item.data("team_id");

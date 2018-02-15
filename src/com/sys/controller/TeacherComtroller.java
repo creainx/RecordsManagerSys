@@ -7,17 +7,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.tools.ant.taskdefs.Sleep;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.sys.biz.TeaTeamGroupBiz;
 import com.sys.biz.TeacherBiz;
 import com.sys.biz.TeamBiz;
-import com.sys.entity.StudentInfo;
 import com.sys.entity.TeaTeamGroupInfo;
 import com.sys.entity.TeacherInfo;
 import com.sys.entity.TeamInfo;
@@ -47,7 +43,7 @@ public class TeacherComtroller {
 	@RequestMapping("/fastLogin")
 	public String fastLogin(Model model, HttpSession session, HttpServletResponse response, TeacherInfo teacherInfo) {
 		this.login(model, session, response, teacherInfo);
-		return "redirect:/teacher/indexPage.go";
+		return "redirect:/teacharTask/taskBiz.go";
 	}
 
 	/**
@@ -103,8 +99,6 @@ public class TeacherComtroller {
 	@RequestMapping("/teaTeam")
 	public String getTeaTeam(String selTeamId, Model model, HttpSession session) {
 
-		model.addAttribute("sel_navId", "nav_teamInfo");
-
 		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
 		model.addAttribute("groupList", groupList);
@@ -145,7 +139,7 @@ public class TeacherComtroller {
 	}
 
 	@RequestMapping("/indexPage")
-	public String goIndexPage(String sel_navId, Model model, HttpSession session) {
+	public String goIndexPage(Model model, HttpSession session) {
 		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
 		model.addAttribute("groupList", groupList);
@@ -160,13 +154,11 @@ public class TeacherComtroller {
 		}
 		model.addAttribute("topTeamList", topTeamList);
 
-		model.addAttribute("sel_navId", "nav_synthesize");
 		return "index/teaSynthesize";
 	}
 
 	@RequestMapping("/teamInfoPage")
 	public String goTeamInfoPage(String selTeamId, Model model, HttpSession session) {
-		model.addAttribute("sel_navId", "nav_teamInfo");
 		model.addAttribute("selTeamId", selTeamId);
 		return "index/teaIndex";
 	}
