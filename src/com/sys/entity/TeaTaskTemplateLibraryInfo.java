@@ -7,6 +7,13 @@ public class TeaTaskTemplateLibraryInfo {
 	private String tl_info;
 	private TeaTaskTemplateGroupInfo teaTaskTemplateGroupInfo;
 
+	public String getFormat_tl_info() {
+		String tl_info = this.getTl_info();
+		tl_info = tl_info.replace("<", "11");
+		System.out.println(tl_info);
+		return tl_info;
+	}
+	
 	public String getTl_id() {
 		return tl_id;
 	}

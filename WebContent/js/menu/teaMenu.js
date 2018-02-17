@@ -47,7 +47,7 @@ $(document).ready(function() {
 	});
 	
 	$("#nav_task").click(function () {
-		window.location = "http://localhost:8080/RecordsManagerSys/teacharTask/taskBiz.go";
+		window.location = "http://localhost:8080/RecordsManagerSys/teacherTask/taskBiz.go";
 	});
 
 });

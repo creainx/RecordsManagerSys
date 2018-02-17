@@ -14,8 +14,7 @@ public class ErrorList {
 		errorMap.put(3, "信息提交错误");
 		errorMap.put(4, "当前用户没有此权限");
 		errorMap.put(5, "查询无结果");
-		errorMap.put(6, "账号不存在");
-		errorMap.put(7, "账号不存在");
+
 	}
 	
 	public static final String getErrorInfoByNum(int errorNum) {

@@ -15,7 +15,7 @@ body {
 .groupName {
 	height: 20px;
 	line-height: 20px;
-	padding: 5px;
+	padding: 8px;
 	font-size: 18px;
 	font-weight: bold;
 	border-bottom: 1px #e6ebf1 solid;
@@ -47,8 +47,14 @@ body {
 }
 
 .sel_li_teamName {
-	border-bottom: 1px #e6ebf1 solid;
+	border-bottom: 1px #0066CC solid;
 	background-color: #0066CC;
+	color: white;
+}
+
+.rightClickSel_li_teamName{
+	border-bottom: 1px #FF6666 solid;
+	background-color: #FF6666;
 	color: white;
 }
 
@@ -63,40 +69,26 @@ body {
 	cursor: pointer;
 }
 
-.li_teamName:hover {
+.li_teamName:not(.rightClickSel_li_teamName):hover {
 	background-color: #FFFFCC;
 	color: #FF0033;
 	cursor: pointer;
 }
 
+.rightClickSel_li_teamName{
+	background-color: #FF6666;
+	border-bottom: 1px #FF6666 solid;
+	color: white;
+}
+
+.rightClickSel_li_groupName{
+	background-color: #666666;
+	border-bottom: 1px #666666 solid;
+	color: white;
+}
 .teamGroup_list {
 	/*display: none;*/
 	
-}
-
-.ul_member_menu {
-	width: 140px;
-	background-color: rgb(250, 252, 250);
-	-moz-box-shadow: 0 0 4px gray;
-	box-shadow: 0 0 4px gray;
-	position: absolute;
-	/* left: 800px;
-	top: 380px; */
-	display: none;
-	margin: 10px;
-	z-index: 9999;
-}
-
-.ul_member_menu .li_item {
-	font-size: 14px;
-	color: gray;
-	border-bottom: 1px #e6ebf1 solid;
-	padding: 5px;
-	cursor: pointer;
-}
-
-.ul_member_menu .li_item:hover {
-	color: #CC0033;
 }
 
 .teamDetailedInfo {
@@ -195,10 +187,6 @@ body {
 	background-color: #28a745;
 	outline: none;
 	cursor: pointer;
-}
-
-.add_student:hover {
-	background-image: linear-gradient(-180deg, #66CC00 0%, #28a745 90%);
 }
 
 .teamBiz_menuImg {
@@ -330,4 +318,10 @@ body {
 .btn_exit_add {
 	background-image: linear-gradient(-180deg, #FF6666 0%, #FF0033 90%);
 	border: 1px #FF0033 solid;
+}
+
+.loading_teamInfo {
+	padding: 30px;
+	color: #999999;
+	font-size: 22px;
 }

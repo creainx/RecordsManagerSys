@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	
+	$("#teamGroup_listAll").bind("contextmenu", function() {
+		return false;
+	});
+	
 	(function() {
 		$(".nav_item_sel").removeClass("nav_item_sel");
 		$("#nav_teamInfo").addClass("nav_item_sel");
@@ -7,39 +11,16 @@ $(document).ready(function() {
 	
 	$(".tag_teamName").click(function() {
 		var item = $(event.currentTarget);
-		var selTeamId = item.data("team_id");
 		removeTeamNameStyle();
-		var selItem = $(".li_teamName[data-team_id='" + selTeamId + "']");
-		addTeamNameStyle(selItem);
-		loadTeamInfoByteamId(selTeamId);
+		addTeamNameStyle(item);
+		loadTeamInfoByteamId(item.data("team_id"));
+		hideAllRightMenu();
 	});
 	
 	
 	$("#teamDetailedInfo").bind("contextmenu", function() {
 		return false;
 	})
-
-	$(".team_memberItem").mousedown(function(e) {
-		if (3 == e.which) {
-
-			var item = $(event.currentTarget);
-
-			var xx = e.originalEvent.x
-					|| e.originalEvent.layerX || 0;
-			var yy = e.originalEvent.y
-					|| e.originalEvent.layerY || 0;
-
-			var x = item.offset();
-
-			$("#ul_member_menu").css("left", xx);
-			$("#ul_member_menu").css("top", x.top);
-			$("#ul_member_menu").show();
-
-			$(".sle_team_memberItem").removeClass("sle_team_memberItem");
-			item.addClass("sle_team_memberItem");
-		}
-	});
-	
 	
 	$(".groupUnfoldShrink").click(function() {
 		
@@ -56,6 +37,8 @@ $(document).ready(function() {
 			item.css(
 					"backgroundPositionX", "-22px");
 		}
+		
+		hideAllRightMenu();
 	});
 	
 	$("#add_student").click(function() {
@@ -77,4 +60,49 @@ $(document).ready(function() {
 		$("#add_studentForm input[type=text]").val("");
 		$("#add_studentForm").hide();
 	});
+	
+	//分组菜单的右键菜单----------------------------------
+	
+
+	
+	function hideAllRightMenu() {
+		hideGroupItemMenu();
+		hideTeamItemMenu();
+	}
+	function hideTeamItemMenu() {
+		$("#teamItem_menu").hide();
+		$(".rightClickSel_li_teamName").removeClass("rightClickSel_li_teamName");
+	}
+	
+	function hideGroupItemMenu() {
+		$("#teamGroup_menu").hide();
+		$(".rightClickSel_li_groupName").removeClass("rightClickSel_li_groupName");
+	}
+	
+	function showRightClickMenu(e,menuList,item) {
+		hideAllRightMenu();
+		var xx = e.originalEvent.x || e.originalEvent.layerX || 0;
+		var yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+		var x = item.offset();
+		menuList.css("left", xx);
+		menuList.css("top", x.top + 20);
+		menuList.show();
+	}
+	
+	$(".tag_teamName").mousedown(function(e) {
+		if (3 == e.which) {
+			var item = $(event.currentTarget);
+			showRightClickMenu(e,$("#teamItem_menu"),item);
+			item.addClass("rightClickSel_li_teamName");
+		}
+	});
+
+	$(".tag_groupName").mousedown(function(e) {
+		if (3 == e.which) {
+			var item = $(event.currentTarget);
+			showRightClickMenu(e,$("#teamGroup_menu"),item);
+			item.addClass("rightClickSel_li_groupName");
+		}
+	});
+	//分组菜单的右键菜单----------------------------------
 });

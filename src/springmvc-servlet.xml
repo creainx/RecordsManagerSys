@@ -57,7 +57,7 @@
 	<mvc:interceptors>
 
 		<mvc:interceptor>
-			<mvc:mapping path="/teacher/**" />
+			<mvc:mapping path="/teacher*/**" />
 			<bean class="com.sys.interceptor.TeacherInterceptor">
 				<property name="uncheckUrls">
 					<list>

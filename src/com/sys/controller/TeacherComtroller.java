@@ -43,7 +43,7 @@ public class TeacherComtroller {
 	@RequestMapping("/fastLogin")
 	public String fastLogin(Model model, HttpSession session, HttpServletResponse response, TeacherInfo teacherInfo) {
 		this.login(model, session, response, teacherInfo);
-		return "redirect:/teacharTask/taskBiz.go";
+		return "redirect:/teacherTask/taskBiz.go";
 	}
 
 	/**
@@ -91,18 +91,18 @@ public class TeacherComtroller {
 			// error:3 提交信息错误
 			resultData.setErrorNum(3);
 		}
-
 		System.out.println(resultData.jsonFormat());
 		return resultData.jsonFormat();
 	}
 
 	@RequestMapping("/teaTeam")
 	public String getTeaTeam(String selTeamId, Model model, HttpSession session) {
-
 		TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 		List<TeaTeamGroupInfo> groupList = teaTeamGroupBiz.getTeacherTeamGroupList(teaInfo.getTea_id());
-		model.addAttribute("groupList", groupList);
-		model.addAttribute("selTeamId", selTeamId);
+		model.addAttribute("teamGroupList", groupList);
+		if(selTeamId != null) {
+			session.setAttribute("selTeamId", selTeamId);
+		}
 		return "team/teaTeam";
 	}
 
@@ -119,6 +119,7 @@ public class TeacherComtroller {
 				// List<StudentInfo> list = teamInfo.getTeamMemberList();
 				// model.addAttribute("teamMemberList", list);
 				resultData.setData(teamInfo);
+				session.setAttribute("selTeamId", teamId);
 				resultData.setResult(true);
 			} else {
 				resultData.setErrorNum(4, "你没有访问此班级的权限");

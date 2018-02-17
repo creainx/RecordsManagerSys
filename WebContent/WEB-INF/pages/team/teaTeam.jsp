@@ -6,8 +6,11 @@
 <link rel="stylesheet" type="text/css"
 	href="${applicationScope.css}/must.css" />
 <script type="text/javascript" src="${applicationScope.js}/jquery.js"></script>
+<script type="text/javascript" src="${applicationScope.js}/must.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>管理中心</title>
+<link rel="stylesheet" type="text/css"
+	href="${applicationScope.css}/menu/rightClickMenu.css" />
 <link rel="stylesheet" type="text/css"
 	href="${applicationScope.css}/team/teaTeam.css" />
 <script type="text/javascript"
@@ -19,14 +22,14 @@
 	<div class="mid_main">
 		<jsp:include page="/WEB-INF/pages/menu/teaMenu.jsp"></jsp:include>
 		<div class="m_overHien">
-			<ul id="ul_member_menu" class="ul_member_menu m_format_ul">
-				<li id="ul_menu_cancel" class="li_item">查看学生作业记录</li>
-				<li id="ul_menu_download" class="li_item">发布作业</li>
-				<li id="ul_menu_setBranch" class="li_item">发布考试</li>
-				<li id="ul_menu_delFile" class="li_item">设置职位</li>
-				<li id="ul_menu_cancel23" class="li_item">禁用学生</li>
-				<li id="ul_menu_cancel2" class="li_item">删除学生</li>
-				<li id="ul_menu_cancel" class="li_item">取消</li>
+			<ul id="ul_member_menu" class="rightClickMenu">
+				<li id="ul_menu_cancel" class="rightClickMenu_item">查看学生作业记录</li>
+				<li id="ul_menu_download" class="rightClickMenu_item">发布作业</li>
+				<li id="ul_menu_setBranch" class="rightClickMenu_item">发布考试</li>
+				<li id="ul_menu_delFile" class="rightClickMenu_item">设置职位</li>
+				<li id="ul_menu_cancel23" class="rightClickMenu_item">禁用学生</li>
+				<li id="ul_menu_cancel2" class="rightClickMenu_item">删除学生</li>
+				<li id="ul_menu_cancel" class="rightClickMenu_item">取消</li>
 			</ul>
 			<div class="m_area_partition">
 				<div class="grayTit">班级管理菜单</div>
@@ -39,16 +42,32 @@
 					</li>
 				</ul>
 			</div>
-			<div class="teamGroup_listAll m_area_partition">
-				<c:forEach items="${groupList }" var="i">
+			<div id="teamGroup_listAll" class="teamGroup_listAll m_area_partition">
+				<ul id="teamGroup_menu" class="rightClickMenu">
+					<li id="" class="rightClickMenu_item">重命名</li>
+					<li class="rightClickMenu_separateItem"></li>
+					<li id="" class="rightClickMenu_item">清空列表</li>
+					<li id="" class="rightClickMenu_item">删除分组</li>
+					<li class="rightClickMenu_separateItem"></li>
+					<li id="" class="rightClickMenu_item">取消</li>
+				</ul>
+				<ul id="teamItem_menu" class="rightClickMenu">
+					<li id="" class="rightClickMenu_item">重命名</li>
+					<li class="rightClickMenu_separateItem"></li>
+					<li id="" class="rightClickMenu_item">删除</li>
+					<li class="rightClickMenu_separateItem"></li>
+					<li id="ul_menu_cancel" class="rightClickMenu_item">取消</li>
+				</ul>
+				<c:forEach items="${teamGroupList }" var="i">
 					<div class="teamGroup_item">
-						<div class="groupName">
+						<div class="groupName tag_groupName">
 							<label class="m_float_left">${i.tg_name}</label>
 							<div class="groupUnfoldShrink"></div>
 						</div>
 						<ul class="teamGroup_list m_format_ul">
 							<c:forEach items="${i.teamInfoList }" var="i">
-								<li class="li_teamName tag_teamName" data-team_id="${i.team_id }">${i.team_name }</li>
+								<li class="li_teamName tag_teamName"
+									data-team_id="${i.team_id }">${i.team_name }</li>
 							</c:forEach>
 						</ul>
 					</div>
@@ -79,12 +98,8 @@
 				</div>
 			</div>
 			<div id="teamDetailedInfo" class="teamDetailedInfo m_area_partition">
-				<div id="loading_teamInfo" class="loading_teamInfo">
-					加载中...
-				</div>
-				<div id="loadArea_member_list">
-				
-				</div>
+				<div id="loading_teamInfo" class="loading_teamInfo">加载中...</div>
+				<div id="loadArea_member_list"></div>
 			</div>
 		</div>
 	</div>
@@ -92,14 +107,6 @@
 </html>
 
 <style type="text/css">
-
-.loading_teamInfo{
-	padding: 30px;
-	color: #999999;
-	font-size: 22px;
-}
-
-
 </style>
 <script type="text/javascript">
 	function addTeamNameStyle(item) {
@@ -112,14 +119,14 @@
 		item.addClass("li_teamName");
 		item.removeClass("sel_li_teamName");
 	}
-	
+
 	var loadingTime = null;
-	
+
 	function loadTeamInfoByteamId(loadTeamId) {
-		loadingTime = setTimeout(function () {
+		loadingTime = setTimeout(function() {
 			$("#loading_teamInfo").show();
-		},300);
-	
+		}, 300);
+
 		var url = "${applicationScope.proName}/teacher/getTeamMember.go";
 		var params = "teamId=" + loadTeamId;
 		$.post(url, params, function(ajaxData) {
@@ -133,7 +140,7 @@
 	//1.绑定选中的班级
 	//2.加载选中班级的学生列表
 	(function() {
-		var selTeamId = '${requestScope.selTeamId}';
+		var selTeamId = '${sessionScope.selTeamId}';
 		if (selTeamId == "") {
 			addTeamNameStyle($(".li_teamName").eq(0));
 		} else {

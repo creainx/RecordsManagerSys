@@ -37,9 +37,10 @@ public class TeacherInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
+		System.out.println("-----------------------------------");
 		Boolean flag = false;
-		
 		String requestUrl = request.getRequestURI();
+		System.out.println("拦截成功:" + requestUrl);
 		for (String noUrl : uncheckUrls) {
 			if (requestUrl.contains(noUrl)) {
 				flag = true;
@@ -52,13 +53,14 @@ public class TeacherInterceptor implements HandlerInterceptor {
 			if (session.getAttribute("teaInfo") != null) {
 				TeacherInfo teaInfo = (TeacherInfo) session.getAttribute("teaInfo");
 				if (teaInfo.getTea_state() == 1) {
+					System.out.println("放行-----------------------------------");
 					return true;
 				}
 			}
 			//request.getRequestDispatcher("/teacher/loginPage.go").forward(request,response);
 			request.getRequestDispatcher("/teacher/fastLogin.go?tea_id=1000&tea_pwd=0000").forward(request,response);
 		}
-		
+		System.out.println("-----------------------------------");
 		return flag;
 	}
 

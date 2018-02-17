@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.rightClickMenu {
+	width: 140px;
+	background-color: rgb(250, 252, 250);
+	box-shadow: 0px 0px 8px 1px grey;
+	position: absolute;
+	/* left: 800px;
+	top: 380px; */
+	display: none;
+	margin: 10px;
+	z-index: 9999;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.rightClickMenu .rightClickMenu_item {
+	padding: 4px;
+	cursor: pointer;
+	color: #444444;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.rightClickMenu .rightClickMenu_separateItem {
+	height: 1px;
+	background-color: #e6ebf1;
+	margin: 2px 8px;
+}
+
+.rightClickMenu .rightClickMenu_item:hover {
+	color: #CC0033;
+}
