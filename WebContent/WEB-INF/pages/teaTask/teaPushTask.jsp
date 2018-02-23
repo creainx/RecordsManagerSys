@@ -12,22 +12,14 @@
 <link rel="stylesheet" type="text/css"
 	href="${applicationScope.css}/menu/rightClickMenu.css" />
 <link rel="stylesheet" type="text/css"
-	href="${applicationScope.css}/task/teaTaskBiz.css" />
+	href="${applicationScope.css}/task/teaPushTask.css" />
 <script type="text/javascript"
-	src="${applicationScope.js}/task/teaTaskBiz.js"></script>
+	src="${applicationScope.js}/task/teaPushTask.js"></script>
 </head>
-<body class="m_format_body" onresize="reset_hint_line()">
+<body class="m_format_body">
 	<jsp:include page="/WEB-INF/pages/message/message.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/pages/head/teaHead.jsp"></jsp:include>
 	<div class="mid_main">
-		<div class="m_area_partition">
-			<div class="grayTit">作业管理菜单</div>
-			<ul class="m_area_partition m_format_ul m_overHien">
-				<li class="taskBiz_menu_item"><img class="taskBiz_menuImg"
-					src="${applicationScope.proName}/img/task_logo.png" /> <label>创建新的作业</label>
-				</li>
-			</ul>
-		</div>
 		<div id="taskGroup_listAll" class="taskGroup_listAll m_area_partition">
 			<ul id="taskGroup_menu" class="rightClickMenu">
 				<li id="" class="rightClickMenu_item">重命名</li>
@@ -40,7 +32,7 @@
 				<li id="" class="rightClickMenu_item">取消</li>
 			</ul>
 			<ul id="taskItem_menu" class="rightClickMenu">
-				<li id="taskItemMenu_publishJob" class="rightClickMenu_item">发布此作业</li>
+				<li id="taskItemMenu_checkTaskInfo" class="rightClickMenu_item">查看作业详情</li>
 				<li class="rightClickMenu_separateItem"></li>
 				<li id="" class="rightClickMenu_item">编辑作业</li>
 				<li class="rightClickMenu_separateItem"></li>
@@ -48,6 +40,7 @@
 				<li class="rightClickMenu_separateItem"></li>
 				<li id="taskItemMenu__cancel" class="rightClickMenu_item">取消</li>
 			</ul>
+			<!-- <div class="myTaskList_font">作业列表</div> -->
 			<c:forEach items="${taskGroupList }" var="i">
 				<div class="taskGroup_item">
 					<div class="groupName tag_groupName">
@@ -62,9 +55,73 @@
 				</div>
 			</c:forEach>
 		</div>
-		<div id="taskDetailedInfo" class="taskDetailedInfo m_area_partition">
-			<div id="selTaskName" class="selTaskName">${sessionScope.selCheckTaskInfo.tl_title}</div>
-			<pre id="tasInfo_show" class="tasInfo_show"><c:choose><c:when test="${sessionScope.selCheckTaskInfo.tl_info != ''}">${sessionScope.selCheckTaskInfo.tl_info}</c:when><c:otherwise><span class="alertNotTaskInfo">没有内容</span></c:otherwise></c:choose></pre>
+		<div id="publish_job" class="publish_job m_area_partition">
+			<div class="selTaskName">发布作业</div>
+			<div>
+				<div class="publish_job_line">
+					<label>作业名称&nbsp;:&nbsp;</label> <input id="publish_taskName"
+						class="publish_taskName"
+						value="${requestScope.selPushTaskInfo.tl_title}" />
+				</div>
+				<div id="publish_job_team" class="publish_job_line">
+					<label>发布到&nbsp;:&nbsp;</label> <span id="publish_teamList">
+						<label class="publish_teamItem">S1E373(34/34)</label>
+					</span> <label id="selectTeamMember" class="selectOperation">(选择)</label>
+					<div id="selTeamArea" class="m_transparencyDarkBody">
+						<div class="selTeamArea">
+							<div class="font_selTeam">选择班级</div>
+							<div>
+								<div class="teamGroup_line tag_teamGroup_line">
+									<input type="checkbox" />默认分组
+								</div>
+								<div class="teamInfoAll tag_team_list">
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+									<div class="teamInfo_line">
+										<input type="checkbox" />S1E373
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="publish_job_line">
+					<label>要求时间&nbsp;:&nbsp;</label> <span><input type="text"
+						value="2" class="input_completionDay" />&nbsp;天&nbsp;</span> <input
+						class="input_completionTime" type="time" value="14:00" />
+					<div class="publish_job_operation">
+						<input id="btn_confirm" class="btn_confirm" type="button"
+							value="发布作业" />
+					</div>
+				</div>
+				<div class="publish_job_line">
+					<textarea id="" class="redact_tasInfo"><c:choose>
+							<c:when test="${requestScope.selPushTaskInfo.tl_info != ''}">${requestScope.selPushTaskInfo.tl_info}</c:when>
+							<c:otherwise>
+								<span class="alertNotTaskInfo">没有内容</span>
+							</c:otherwise>
+						</c:choose></textarea>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
@@ -86,12 +143,10 @@
 
 	//初始化
 	(function() {
-		var selId = '${sessionScope.selCheckTaskInfo.tl_id}';
+		var selId = '${requestScope.selPushTaskInfo.tl_id}';
 		var selItem = $(".li_taskName[data-taskid=" + selId + "]");
 		addTaskNameStyle(selItem);
 	})();
-
-	
 </script>
 
 

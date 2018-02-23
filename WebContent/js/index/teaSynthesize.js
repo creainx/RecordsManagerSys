@@ -26,4 +26,9 @@ $(document).ready(function() {
 		var params = "?selTeamId=" + selTeamId;
 		window.location = url + params;
 	});
+	
+	$("#teaPushTask").click(function() {
+		var url = "http://localhost:8080/RecordsManagerSys/teacherTask/pushTask.go";
+		window.location = url;
+	});
 });

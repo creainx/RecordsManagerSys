@@ -95,7 +95,7 @@ body {
 }
 
 .li_taskName:not (.rightClickSel_li_taskName ):hover {
-	background-image: linear-gradient(-180deg, #FF6666 0%, red 90%);
+	background-color: #FFFFCC;
 	color: #FF0033;
 	cursor: pointer;
 }
@@ -112,11 +112,13 @@ body {
 
 .selTaskName {
 	color: #444444;
-	font-size: 38px;
+	font-size: 43px;
 	font-weight: bold;
 	padding: 15px;
 	margin: 0px;
 	border-bottom: 1px #e6ebf1 solid;
+	/* background-image: linear-gradient(-180deg, #0066CC 0%, #0099CC 90%);
+	color: white; */
 }
 
 .tasInfo_show, .redact_tasInfo {
@@ -129,11 +131,6 @@ body {
 	letter-spacing: 1px;
 	font-size: 17px;
 	color: #333333;
-}
-
-.tasInfo_show {
-	width: 740px;
-	min-height: 700px;
 }
 
 .redact_tasInfo {
@@ -232,4 +229,65 @@ body {
 .alertNotTaskInfo {
 	color: #777777;
 	font-size: 15px;
+}
+
+.myTaskList_font {
+	font-size: 17px;
+	padding: 5px 10px;
+	background-image: linear-gradient(-180deg, #666666 0%, #444444 90%);
+	border: 1px #333333 solid;
+	box-shadow: 0 0 3px grey;
+	color: white;
+	font-weight: bold;
+}
+
+.selTeamArea {
+	width: 400px;
+	height: 600px;
+	border: 1px white solid;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	margin-left: -200px;
+	margin-top: -400px;
+	cursor: pointer;
+	background-color: rgb(250, 250, 250);
+	border-radius: 10px;
+	overflow: auto;
+}
+.teamInfoAll{
+	display: none;
+}
+.font_selTeam {
+	color: #444444;
+	font-size: 31px;
+	font-weight: bold;
+	padding: 10px;
+	margin: 0px;
+	border-bottom: 1px #e6ebf1 solid;
+}
+
+.selTeamArea .teamInfo_line {
+	color: #444444;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 8px 5px;
+	margin-left: 15px;
+	border-bottom: 1px #e6ebf1 solid;
+}
+
+.selTeamArea .teamInfo_line:hover{
+		background-image: linear-gradient(-180deg, rgb(240, 240, 240) 0%,
+		rgb(250, 250, 250) 90%);
+}
+
+.selTeamArea .teamGroup_line {
+	color: #444444;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 8px;
+	margin: 0px;
+	border-bottom: 1px #e6ebf1 solid;
+	background-image: linear-gradient(-180deg, rgb(245, 245, 245) 0%,
+		rgb(235, 235, 235) 90%);
 }

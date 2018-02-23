@@ -39,7 +39,7 @@ body {
 }
 
 .teamGroup_item {
-	border: 1px #e6ebf1 solid;
+/* 	border: 1px #e6ebf1 solid; */
 }
 
 .li_teamName, .sel_li_teamName {
@@ -51,14 +51,13 @@ body {
 }
 
 .sel_li_teamName {
-	border-bottom: 1px #0066CC solid;
-	background-color: #0066CC;
+	background-image: linear-gradient(-180deg, #0066CC 0%, #0099CC 90%);
 	color: white;
 }
 
 .rightClickSel_li_teamName{
 	border-bottom: 1px #FF6666 solid;
-	background-color: #FF6666;
+	background-image: linear-gradient(-180deg, #FF6666 0%, red 90%);
 	color: white;
 }
 
@@ -80,14 +79,12 @@ body {
 }
 
 .rightClickSel_li_teamName{
-	background-color: #FF6666;
-	border-bottom: 1px #FF6666 solid;
+	background-image: linear-gradient(-180deg, #FF6666 0%, red 90%);
 	color: white;
 }
 
 .rightClickSel_li_groupName{
-	background-color: #666666;
-	border-bottom: 1px #666666 solid;
+	background-image: linear-gradient(-180deg, #777777 0%, #555555 90%);
 	color: white;
 }
 .teamGroup_list {

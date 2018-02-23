@@ -6,9 +6,10 @@ $(document).ready(function() {
 
 	$(".tag_taskName").click(function() {
 		var selItem = $(event.currentTarget);
-		window.location = "http://localhost:8080/RecordsManagerSys/teacherTask/taskBiz.go?selTaskId=" + selItem.data("taskid");
+		window.location = "http://localhost:8080/RecordsManagerSys/teacherTask/taskBiz.go?selCheckTaskId=" + selItem.data("taskid");
 		
 	});
+	
 	
 	$(".groupUnfoldShrink").click(function() {
 		
@@ -70,7 +71,6 @@ $(document).ready(function() {
 	});
 	
 	
-
 	(function() {
 		$(".nav_item_sel").removeClass("nav_item_sel");
 		$("#nav_task").addClass("nav_item_sel");
@@ -81,17 +81,13 @@ $(document).ready(function() {
 		$("#publish_teamList").html();
 		$("#publish_stuList").html();
 	}
-	
-	$("#btn_exit").click(function() {
-		ini_publish_job();
-		$("#publish_job").hide();
-	});
+
 	
 	$("#taskItemMenu_publishJob").click(function() {
 		var selTaskItem = $(".rightClickSel_li_taskName");
-		$("#publish_job").show();
-		$("#publish_taskName").html(selTaskItem.text());
-		hideTaskItemMenu();
+		var url = "http://localhost:8080/RecordsManagerSys/teacherTask/pushTask.go?" +
+				"pushTaskId=" + selTaskItem.data("taskid");
+		window.location = url;
 	});
 	
 	$("#taskItemMenu__cancel").click(function() {

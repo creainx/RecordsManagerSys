@@ -34,4 +34,9 @@ public class TeamBizImpl implements TeamBiz {
 	public int updateTeamInfo(TeamInfo teamInfo) {
 		return teamDao.updateTeamInfo(teamInfo);
 	}
+
+	@Override
+	public TeamInfo getTeamInfoBaseByTeamId(String teamId) {
+		return teamDao.getTeamInfoBaseByTeamId(teamId);
+	}
 }

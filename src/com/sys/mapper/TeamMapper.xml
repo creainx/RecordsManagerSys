@@ -16,6 +16,11 @@
 			resultMap="com.sys.dao.TeaTeamGroupDao.BaseResultMapAndTeaInfo"></association>
 		<collection property="teamMemberList" resultMap="com.sys.dao.StudentDao.FullResultMap"></collection>
 	</resultMap>
+	
+	<select id="getTeamInfoBaseByTeamId" resultMap="BaseResultMap">
+		select * from TeamInfo ti
+		where team_id = #{teamId} and team_state = 1
+	</select>
 
 	<select id="getTeamInfoAllByTeamId" resultMap="FullResultMap">
 		select * from

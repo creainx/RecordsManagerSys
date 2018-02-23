@@ -18,7 +18,6 @@
 	<jsp:include page="/WEB-INF/pages/message/message.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/pages/head/teaHead.jsp"></jsp:include>
 	<div class="mid_main">
-		<jsp:include page="/WEB-INF/pages/menu/teaMenu.jsp"></jsp:include>
 		<div class="m_overHien">
 			<div class="teamGroup_listAll m_area_partition">
 				<div class="team_group">
@@ -66,7 +65,7 @@
 						</div>
 					</div>
 
-					<div class="tool_item_line">
+					<div  id="teaPushTask" class="tool_item_line">
 						<div class="tool_area">
 							<img class="toolImg" /> <label class="toolName">发布作业</label>
 						</div>

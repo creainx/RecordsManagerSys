@@ -21,7 +21,6 @@
 	<jsp:include page="/WEB-INF/pages/message/message.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/pages/head/teaHead.jsp"></jsp:include>
 	<div class="mid_main">
-		<jsp:include page="/WEB-INF/pages/menu/teaMenu.jsp"></jsp:include>
 		<div class="m_overHien">
 			<div class="m_area_partition">
 				<div class="grayTit">班级管理菜单</div>

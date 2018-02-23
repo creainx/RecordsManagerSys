@@ -7,6 +7,7 @@
 	src="${applicationScope.js}/menu/teaMenu.js"></script>
 
 <div class="m_area_partition_notTop">
+	<div class="main_topArea"></div>
 	<ul id="main_nav" class="main_nav">
 		<li id="nav_synthesize" class="nav_item">综合</li>
 		<li id="nav_teamInfo" class="nav_item">我的班级</li>
