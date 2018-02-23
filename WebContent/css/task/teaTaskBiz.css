@@ -5,9 +5,11 @@ body {
 	background-color: rgb(250, 250, 250);
 	user-select: none;
 }
-.rightClickMenu{
+
+.rightClickMenu {
 	width: 110px;
 }
+
 .grayTit {
 	height: 20px;
 	line-height: 20px;
@@ -61,11 +63,13 @@ body {
 	color: #666666;
 	cursor: pointer;
 }
-.rightClickSel_li_groupName{
+
+.rightClickSel_li_groupName {
 	background-color: #666666;
 	border-bottom: 1px #666666 solid;
 	color: white;
 }
+
 .groupUnfoldShrink {
 	float: right;
 	width: 20px;
@@ -90,11 +94,12 @@ body {
 	color: white;
 }
 
-.li_taskName:not(.rightClickSel_li_taskName):hover {
+.li_taskName:not (.rightClickSel_li_taskName ):hover {
 	background-color: #FFFFCC;
 	color: #FF0033;
 	cursor: pointer;
 }
+
 .rightClickSel_li_taskName {
 	background-color: #FF6666;
 	border-bottom: 1px #FF6666 solid;
@@ -117,7 +122,7 @@ body {
 
 .pre_tasInfo {
 	white-space: pre-wrap;
-	padding: 10px;
+	padding: 10px 15px;
 	margin: 0px;
 	font-size: 17px;
 	font-family: "微软雅黑";
@@ -125,4 +130,82 @@ body {
 	letter-spacing: 1px;
 	min-height: 400px;
 	font-size: 17px;
+	color: #333333;
+}
+
+.publish_job {
+	width: 780px;
+	float: right;
+	display: none;
+}
+
+.publish_taskName{
+	color: #CC0033;
+	font-weight: bold;
+}
+.input_completionDay,.input_completionTime{
+	padding: 0px 5px;
+	border-radius: 5px;
+	height: 22px;
+	font-size: 12px;
+	border: 1px #CCCCCC solid;
+}
+.input_completionDay{
+	width: 25px;
+}
+.input_completionTime{
+	/* width: 100px; */
+}
+.publish_job_line {
+	margin: 20px;
+}
+.publish_teamItem{
+	color: #003399;
+	font-weight: bold;
+	font-size: 14px;
+}
+.selectOperation{
+	font-size: 14px;
+	color: #FF6666;
+	cursor: pointer;
+}
+.selectOperation:hover{
+	color: #FF0033;
+}
+.publish_job_operation {
+	height: 35px;
+	line-height: 35px;
+	float: right;
+}
+
+.btn_confirm, .btn_exit {
+	width: 75px;
+	height: 30px;
+	color: white;
+	font-size: 14px;
+	border-radius: 3px;
+	/* outline: none; */
+	cursor: pointer;
+}
+
+.btn_confirm {
+	background-image: linear-gradient(-180deg, #00FF7F 0%, #28a745 90%);
+	border: 1px #28a745 solid;
+	font-size: 14px;
+}
+
+.btn_exit {
+	background-image: linear-gradient(-180deg, #FF6666 0%, #FF0033 90%);
+	border: 1px #FF0033 solid;
+	font-size: 14px;
+}
+
+.publish_type{
+	width: 15px;
+	height: 15px;
+}
+
+.alertNotTaskInfo{
+	color: #777777;
+	font-size: 15px;
 }

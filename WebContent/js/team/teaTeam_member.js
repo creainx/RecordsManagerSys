@@ -5,7 +5,7 @@ $(document).ready(function() {
 	});
 
 	function hideMemberItemMenu() {
-		$("#ul_member_menu").hide();
+		$("#member_menu").hide();
 		$(".sle_team_memberItem").removeClass("sle_team_memberItem");
 	}
 	
@@ -22,9 +22,21 @@ $(document).ready(function() {
 	$(".team_memberItem").mousedown(function(e) {
 		if (3 == e.which) {
 			var item = $(event.currentTarget);
-			showRightClickMenu(e,$("#ul_member_menu"),item);
+			showRightClickMenu(e,$("#member_menu"),item);
 			item.addClass("sle_team_memberItem");
 		}
 	});
 	
+	$("#add_student").click(function() {
+		if ($("#add_studentForm").css("display") == 'none') {
+			$("#add_student").hide();
+			$("#add_studentForm").show();
+		} else {
+			$("#add_studentForm").hide();
+		}
+	});
+	
+	$("#memberMenu_cancel").click(function() {
+		hideMemberItemMenu();
+	});
 });

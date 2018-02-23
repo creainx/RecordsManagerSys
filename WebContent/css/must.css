@@ -85,6 +85,10 @@ html, body {
 .m_c_green{
 	color: #339933;
 }
+
+.m_c_gray{
+	color: #666666;
+}
 .m_cen {
 	text-align: center;
 }
@@ -124,4 +128,8 @@ html, body {
 
 .m_disnone{
 	display: none;
+}
+
+.m_cursor_pointer{
+	cursor: pointer;
 }

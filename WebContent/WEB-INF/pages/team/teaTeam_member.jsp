@@ -5,7 +5,18 @@
 
 <script type="text/javascript"
 	src="${applicationScope.js}/team/teaTeam_member.js"></script>
-	
+
+<ul id="member_menu" class="rightClickMenu">
+	<li id="ul_menu_cancel" class="rightClickMenu_item">查看学生作业记录</li>
+	<li class="rightClickMenu_separateItem"></li>
+	<li id="ul_menu_download" class="rightClickMenu_item">发布作业</li>
+	<li id="ul_menu_setBranch" class="rightClickMenu_item">发布考试</li>
+	<li class="rightClickMenu_separateItem"></li>
+	<li id="ul_menu_cancel2" class="rightClickMenu_item">删除学生</li>
+	<li class="rightClickMenu_separateItem"></li>
+	<li id="memberMenu_cancel" class="rightClickMenu_item">取消</li>
+</ul>
+
 <div class="selTeamName">${requestScope.resultData.data.team_name }</div>
 <div class="team_member_tit">
 	<div class="team_member_titFont">
@@ -23,12 +34,13 @@
 			class="header_item_font_interval">操作</label>
 	</div>
 	<c:choose>
-		<c:when test="${fn:length(requestScope.resultData.data.teamMemberList) == 0}">
-      	 没有成员
-    </c:when>
+		<c:when
+			test="${fn:length(requestScope.resultData.data.teamMemberList) == 0}">
+      		 没有成员
+    	</c:when>
 		<c:when test="${requestScope.resultData.result == false}">
-      	${requestScope.message}
-    </c:when>
+      		${requestScope.message}
+    	</c:when>
 		<c:otherwise>
 			<c:forEach items="${requestScope.resultData.data.teamMemberList}"
 				var="i">

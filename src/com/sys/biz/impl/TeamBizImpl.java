@@ -22,4 +22,16 @@ public class TeamBizImpl implements TeamBiz {
 		return teamDao.getTeamInfoAllByTeamId(teamId);
 	}
 
+	@Override
+	public int removeTeamInfoByTeamId(String teamId) {
+		if (teamId == null) {
+			return 0;
+		}
+		return teamDao.removeTeamInfoByTeamId(teamId);
+	}
+
+	@Override
+	public int updateTeamInfo(TeamInfo teamInfo) {
+		return teamDao.updateTeamInfo(teamInfo);
+	}
 }

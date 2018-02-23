@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,13 +32,22 @@
 				<c:forEach items="${groupList }" var="i">
 					<div class="team_group">
 						<div class="team_grouptitle">
-							<div class="groupName">${i.tg_name }</div>
+							<div class="groupName">${i.tg_name }(<span
+									class="tag_teamCount">${fn:length(i.teamInfoList)}</span>)
+							</div>
 							<div class="groupUnfoldShrink"></div>
 						</div>
 						<div class="shrink_group_teamList">
-							<c:forEach items="${i.teamInfoList }" var="t">
-								<div class="teamInfo_item" data-team_id="${t.team_id }" >${t.team_name }</div>
-							</c:forEach>
+							<c:choose>
+								<c:when test="${fn:length(i.teamInfoList) == 0}">
+									<span class="m_c_gray">没有班级</span>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${i.teamInfoList }" var="t">
+										<div class="teamInfo_item" data-team_id="${t.team_id }">${t.team_name }</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</c:forEach>

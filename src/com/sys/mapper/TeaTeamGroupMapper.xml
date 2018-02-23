@@ -24,9 +24,9 @@
 	</resultMap>
 
 	<select id="getTeacherTeamGroupList" resultMap="FullResultMap">
-		select ttg.*,ti.* from TeaTeamGroupInfo ttg
-		inner join TeamInfo ti on ttg.tg_id = ti.tg_id
-		where ttg.tea_id = #{tea_id} and ttg.tg_state = 1 and ti.team_state = 1
+		select * from TeaTeamGroupInfo ttg
+		left join (select * from TeamInfo ti where ti.team_state = 1) ti on ttg.tg_id = ti.tg_id
+		where ttg.tea_id = #{tea_id} and ttg.tg_state = 1
 	</select> 
 
 </mapper>

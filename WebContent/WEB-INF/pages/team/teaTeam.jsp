@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,15 +23,6 @@
 	<div class="mid_main">
 		<jsp:include page="/WEB-INF/pages/menu/teaMenu.jsp"></jsp:include>
 		<div class="m_overHien">
-			<ul id="ul_member_menu" class="rightClickMenu">
-				<li id="ul_menu_cancel" class="rightClickMenu_item">查看学生作业记录</li>
-				<li id="ul_menu_download" class="rightClickMenu_item">发布作业</li>
-				<li id="ul_menu_setBranch" class="rightClickMenu_item">发布考试</li>
-				<li id="ul_menu_delFile" class="rightClickMenu_item">设置职位</li>
-				<li id="ul_menu_cancel23" class="rightClickMenu_item">禁用学生</li>
-				<li id="ul_menu_cancel2" class="rightClickMenu_item">删除学生</li>
-				<li id="ul_menu_cancel" class="rightClickMenu_item">取消</li>
-			</ul>
 			<div class="m_area_partition">
 				<div class="grayTit">班级管理菜单</div>
 				<ul class="m_area_partition m_format_ul m_overHien">
@@ -46,29 +38,38 @@
 				<ul id="teamGroup_menu" class="rightClickMenu">
 					<li id="" class="rightClickMenu_item">重命名</li>
 					<li class="rightClickMenu_separateItem"></li>
+					<li id="" class="rightClickMenu_item">添加班级</li>
+					<li class="rightClickMenu_separateItem"></li>
 					<li id="" class="rightClickMenu_item">清空列表</li>
 					<li id="" class="rightClickMenu_item">删除分组</li>
 					<li class="rightClickMenu_separateItem"></li>
-					<li id="" class="rightClickMenu_item">取消</li>
+					<li id="teamGroupMenu_cancel" class="rightClickMenu_item">取消</li>
 				</ul>
 				<ul id="teamItem_menu" class="rightClickMenu">
 					<li id="" class="rightClickMenu_item">重命名</li>
 					<li class="rightClickMenu_separateItem"></li>
-					<li id="" class="rightClickMenu_item">删除</li>
+					<li id="teamItemMenu_remove" class="rightClickMenu_item">删除</li>
 					<li class="rightClickMenu_separateItem"></li>
-					<li id="ul_menu_cancel" class="rightClickMenu_item">取消</li>
+					<li id="teamItemMenu_cancel" class="rightClickMenu_item">取消</li>
 				</ul>
 				<c:forEach items="${teamGroupList }" var="i">
 					<div class="teamGroup_item">
 						<div class="groupName tag_groupName">
-							<label class="m_float_left">${i.tg_name}</label>
+							<label class="m_float_left">${i.tg_name}(<span class="tag_teamCount">${fn:length(i.teamInfoList)}</span>)</label>
 							<div class="groupUnfoldShrink"></div>
 						</div>
 						<ul class="teamGroup_list m_format_ul">
-							<c:forEach items="${i.teamInfoList }" var="i">
-								<li class="li_teamName tag_teamName"
-									data-team_id="${i.team_id }">${i.team_name }</li>
-							</c:forEach>
+							<c:choose>
+								<c:when test="${fn:length(i.teamInfoList) == 0}">
+									<li class="alertNotTeam">没有班级</li>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${i.teamInfoList }" var="i">
+										<li class="li_teamName tag_teamName"
+											data-team_id="${i.team_id }">${i.team_name }</li>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</ul>
 					</div>
 				</c:forEach>
@@ -90,8 +91,8 @@
 							type="text" value="0000" />
 
 						<div class="addStu_operation">
-							<input id="btn_goon_add" class="btn_goon_add" type="button"
-								value="添加" /> <input id="btn_exit_add" class="btn_exit_add"
+							<input id="btn_confirm" class="btn_confirm" type="button"
+								value="添加" /> <input id="btn_exit" class="btn_exit"
 								type="button" value="关闭" />
 						</div>
 					</div>
@@ -123,6 +124,7 @@
 	var loadingTime = null;
 
 	function loadTeamInfoByteamId(loadTeamId) {
+		
 		loadingTime = setTimeout(function() {
 			$("#loading_teamInfo").show();
 		}, 300);
@@ -132,6 +134,7 @@
 		$.post(url, params, function(ajaxData) {
 			clearTimeout(loadingTime);
 			$("#loading_teamInfo").hide();
+			$("#add_studentForm").hide();
 			$("#loadArea_member_list").html(ajaxData);
 		});
 	}

@@ -5,11 +5,9 @@ $(document).ready(function() {
 	});
 
 	$(".tag_taskName").click(function() {
-		removeTaskNameStyle();
-		addTaskNameStyle($(event.currentTarget));
-		autoLoadSelTaskInfo();
-		hideAllRightMenu();
-
+		var selItem = $(event.currentTarget);
+		window.location = "http://localhost:8080/RecordsManagerSys/teacherTask/taskBiz.go?selTaskId=" + selItem.data("taskid");
+		
 	});
 	
 	$(".groupUnfoldShrink").click(function() {
@@ -70,10 +68,34 @@ $(document).ready(function() {
 			item.addClass("rightClickSel_li_groupName");
 		}
 	});
+	
+	
 
 	(function() {
 		$(".nav_item_sel").removeClass("nav_item_sel");
 		$("#nav_task").addClass("nav_item_sel");
 	})();
+	
+	function ini_publish_job() {
+		$("#publish_taskName").html();
+		$("#publish_teamList").html();
+		$("#publish_stuList").html();
+	}
+	
+	$("#btn_exit").click(function() {
+		ini_publish_job();
+		$("#publish_job").hide();
+	});
+	
+	$("#taskItemMenu_publishJob").click(function() {
+		var selTaskItem = $(".rightClickSel_li_taskName");
+		$("#publish_job").show();
+		$("#publish_taskName").html(selTaskItem.text());
+		hideTaskItemMenu();
+	});
+	
+	$("#taskItemMenu__cancel").click(function() {
+		hideTaskItemMenu();
+	});
 
 });

@@ -23,7 +23,7 @@
 		
 		$("#message_info").html(info);
 
-		if (result == true) {
+		if (result != "" && result != null && (result == true || result == "true")) {
 			$("#message_img").prop("src", "${applicationScope.img}/succee.png");
 			$("#message").addClass("message_succee");
 		} else {
