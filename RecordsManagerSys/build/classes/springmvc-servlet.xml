@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 添加这个配置，使得@RequestMapping注解得以生效 -->
+	<mvc:annotation-driven>
+
+		<!-- 用于配置消息转换器 MessageConverter -->
+		<mvc:message-converters>
+			<!-- 第一个消息转换器，由SpringMVC框架提供，用于设置ajax请求时候的字符集编码，解决中文乱码问题 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+
+			<!-- 第二个消息转换器，由fastJson提供，主要用于自动将对象转换为json格式字符串，并且解决日期格式问题 -->
+			<bean
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<value>application/json;charset=UTF-8</value>
+				</property>
+				<property name="features">
+					<list>
+						<!-- 此处表示开启日期转换功能，默认格式为 yyyy-MM-dd HH:mm:ss，如果不喜欢，可以在实体类的属性上加@JSONField注解单独设置 -->
+						<value>WriteDateUseDateFormat</value>
+					</list>
+				</property>
+			</bean>
+
+		</mvc:message-converters>
+
+	</mvc:annotation-driven>
+
+	<!-- 配置视图解析器，由视图解析器来决定把请求转发给哪一个JSP -->
+	<!-- 本质其实就是一个拼凑路径的过程 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<import resource="applicationContext.xml" />
+
+	<mvc:interceptors>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/teacher*/**" />
+			<bean class="com.sys.interceptor.TeacherInterceptor">
+				<property name="uncheckUrls">
+					<list>
+						<value>/teacher/login</value>
+						<value>/teacher/fastLogin</value>
+						<value>/teacher/loginPage</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+</beans>
+
+
+
+
+
+
+

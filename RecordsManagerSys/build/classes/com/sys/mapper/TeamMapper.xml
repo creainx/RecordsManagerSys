@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.TeamDao">
+
+	<resultMap id="BaseResultMap" type="com.sys.entity.TeamInfo">
+		<id column="team_id" property="team_id" />
+		<result column="team_name" property="team_name" />
+		<result column="team_state" property="team_state" />
+		<result column="team_type" property="team_type" />
+		<result column="team_date" property="team_date" />
+	</resultMap>
+
+	<resultMap id="FullResultMap" type="com.sys.entity.TeamInfo"
+		extends="BaseResultMap">
+		<association property="teaTeamGroupInfo"
+			resultMap="com.sys.dao.TeaTeamGroupDao.BaseResultMapAndTeaInfo"></association>
+		<collection property="teamMemberList" resultMap="com.sys.dao.StudentDao.FullResultMap"></collection>
+	</resultMap>
+	
+	<select id="getTeamInfoBaseByTeamId" resultMap="BaseResultMap">
+		select * from TeamInfo ti
+		where team_id = #{teamId} and team_state = 1
+	</select>
+
+	<select id="getTeamInfoAllByTeamId" resultMap="FullResultMap">
+		select * from
+		TeamInfo ti
+		inner join TeaTeamGroupInfo tgi on tgi.tg_id = ti.tg_id
+		inner join StudentInfo si on si.team_id = ti.team_id
+		where ti.team_id =
+		#{teamId} and team_state = 1
+	</select>
+
+	<delete id="removeTeamInfoByTeamId">
+		delete from teaminfo
+		where team_id = #{teamId}
+	</delete>
+
+	<update id="updateTeamInfo" parameterType="TeamInfo">
+		update teaminfo
+		set team_name = #{teamInfo.team_name},
+		team_state = #{teamInfo.team_state},
+		team_type = #{teamInfo.team_type},
+		team_date = #{teamInfo.team_date},
+		tg_id = #{teamInfo.teaTeamGroupInfo.tg_id}
+		where team_id = #{teamInfo.team_id}
+	</update>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.StudentDao">
+
+	<resultMap id="BaseResultMap" type="com.sys.entity.StudentInfo">
+		<id column="stu_id" property="stu_id" />
+		<result column="stu_name" property="stu_name" />
+		<result column="stu_pwd" property="stu_pwd" />
+		<result column="stu_state" property="stu_state" />
+		<result column="stu_data" property="stu_data" />
+	</resultMap>
+
+	<resultMap id="FullResultMap" type="com.sys.entity.StudentInfo" extends="BaseResultMap">
+		<association property="teamInfo" resultMap="com.sys.dao.TeamDao.BaseResultMap"></association>
+	</resultMap>
+	
+</mapper>

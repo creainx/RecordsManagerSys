@@ -1,2 +1,0 @@
-# RecordsManagerSys
-RecordsManagerSys

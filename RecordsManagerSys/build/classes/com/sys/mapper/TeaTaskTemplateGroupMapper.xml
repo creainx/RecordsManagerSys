@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.TeaTaskTemplateGroupDao">
+
+	<resultMap id="BaseResultMap" type="com.sys.entity.TeaTaskTemplateGroupInfo">
+		<id column="tg_id" property="tg_id" />
+		<result column="tg_name" property="tg_name" />
+		<result column="tg_type" property="tg_type" />
+		<result column="tg_state" property="tg_state" />
+		<result column="tg_date" property="tg_date" />
+	</resultMap>
+
+	<resultMap id="BaseResultMapAndTeaInfo" type="com.sys.entity.TeaTaskTemplateGroupInfo"
+		extends="BaseResultMap">
+		<association property="teaInfo"
+			resultMap="com.sys.dao.TeacherDao.BaseResultMap"></association>
+	</resultMap>
+	
+	<resultMap id="FullResultMap" type="com.sys.entity.TeaTaskTemplateGroupInfo"
+		extends="BaseResultMap">
+		<association property="teaInfo"
+			resultMap="com.sys.dao.TeacherDao.BaseResultMap"></association>
+		<collection property="teaTaskTemplateLibraryList"
+			resultMap="com.sys.dao.TeaTaskTemplateLibraryDao.BaseResultMap"></collection>
+	</resultMap>
+	
+	<select id="getTeaTaskTemplateGroupList" resultMap="FullResultMap">
+		select * from TeaTaskTemplateGroupInfo tg
+		inner join TeaTaskTemplateLibraryInfo tl on tg.tg_id = tl.tg_id
+		where tg.tea_id = #{tea_id} and tg.tg_state = 1
+	</select> 
+
+</mapper>
