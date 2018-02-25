@@ -104,9 +104,9 @@ $(document).ready(function() {
 	
 	});
 	
-	$(".teamInfo_line").click(function() {
+	$(".tag_team_name").click(function() {
 		var item = $(event.currentTarget);
-		var item_checkbox = item.children(".tag_team_checkbox");
+		var item_checkbox = item.prevAll(".tag_team_checkbox");
 		 if(item_checkbox.prop("checked")){
 			 item_checkbox.prop({"checked":false});
          }
@@ -114,4 +114,30 @@ $(document).ready(function() {
         	 item_checkbox.prop({"checked":true});
          }
 	});
+	
+	$(".teamMemberUnfoldShrink").click(function() {
+		var item = $(event.currentTarget);
+		var memberList = item.nextAll(".teamInfo_memberList");
+		if(memberList.css("display") == "none"){
+			item.text("∧");
+			memberList.show();
+		}else{
+			item.text("∨");
+			memberList.hide();
+		}
+	});
+	
+	$(".memberItem_line").click(function() {
+		var item = $(event.target);
+		if(item.hasClass("memberItem_line")){
+			var item_checkbox = item.children(".tag_member_checkbox");
+			if(item_checkbox.prop("checked")){
+				 item_checkbox.prop({"checked":false});
+	        }
+	        else{
+	        	 item_checkbox.prop({"checked":true});
+	        }
+		}
+	});
+	
 });

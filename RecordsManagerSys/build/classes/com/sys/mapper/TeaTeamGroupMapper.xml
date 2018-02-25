@@ -14,9 +14,10 @@
 		extends="BaseResultMap">
 		<association property="teaInfo"
 			resultMap="com.sys.dao.TeacherDao.BaseResultMap"></association>
-		<collection property="teamInfoList" resultMap="com.sys.dao.TeamDao.BaseResultMap"></collection>
+		<collection property="teamInfoList"
+			resultMap="com.sys.dao.TeamDao.BaseResultMapAndMemberList"></collection>
 	</resultMap>
-	
+
 	<resultMap id="BaseResultMapAndTeaInfo" type="com.sys.entity.TeaTeamGroupInfo"
 		extends="BaseResultMap">
 		<association property="teaInfo"
@@ -24,9 +25,13 @@
 	</resultMap>
 
 	<select id="getTeacherTeamGroupList" resultMap="FullResultMap">
-		select * from TeaTeamGroupInfo ttg
-		left join (select * from TeamInfo ti where ti.team_state = 1) ti on ttg.tg_id = ti.tg_id
+		select * from
+		TeaTeamGroupInfo ttg
+		left join (select * from TeamInfo ti where ti.team_state = 1) ti on
+		ttg.tg_id = ti.tg_id
+		left join (select * from studentinfo si where si.stu_state = 1) si on
+		si.team_id = ti.team_id
 		where ttg.tea_id = #{tea_id} and ttg.tg_state = 1
-	</select> 
+	</select>
 
 </mapper>

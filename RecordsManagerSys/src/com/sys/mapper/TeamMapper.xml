@@ -9,6 +9,10 @@
 		<result column="team_type" property="team_type" />
 		<result column="team_date" property="team_date" />
 	</resultMap>
+	
+	<resultMap id="BaseResultMapAndMemberList" type="com.sys.entity.TeamInfo" extends="BaseResultMap">
+		<collection property="teamMemberList" resultMap="com.sys.dao.StudentDao.FullResultMap"></collection>
+	</resultMap>
 
 	<resultMap id="FullResultMap" type="com.sys.entity.TeamInfo"
 		extends="BaseResultMap">
@@ -16,6 +20,8 @@
 			resultMap="com.sys.dao.TeaTeamGroupDao.BaseResultMapAndTeaInfo"></association>
 		<collection property="teamMemberList" resultMap="com.sys.dao.StudentDao.FullResultMap"></collection>
 	</resultMap>
+	
+	
 	
 	<select id="getTeamInfoBaseByTeamId" resultMap="BaseResultMap">
 		select * from TeamInfo ti

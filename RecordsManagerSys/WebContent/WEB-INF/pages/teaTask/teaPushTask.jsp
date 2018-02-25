@@ -57,6 +57,44 @@
 			</c:forEach>
 		</div>
 		<div id="publish_job" class="publish_job m_area_partition">
+			<div id="selTeamArea" class="m_transparencyDarkBody">
+				<div class="selTeamArea">
+					<div class="selTeam_titleMenu">
+						<label class="font_selTeam">选择班级</label> <label
+							class="font_setEnter">完成</label>
+					</div>
+					<c:forEach items="${requestScope.teamGroupList}" var="i">
+						<div>
+							<div class="teamGroup_line tag_teamGroup_line">
+								<span>${i.tg_name}</span>
+							</div>
+							<div class="teamInfoAll tag_team_list">
+								<c:choose>
+									<c:when test="${fn:length(i.teamInfoList) == 0}">
+												没有班级
+											</c:when>
+									<c:otherwise>
+										<c:forEach items="${i.teamInfoList }" var="i">
+											<div class="teamInfo_line" data-team_id="${i.team_id }">
+												<input class="tag_team_checkbox" type="checkbox" /> <label
+													class="m_cursor_pointer tag_team_name">${i.team_name }(${fn:length(i.teamMemberList)})</label>
+												<span class="teamMemberUnfoldShrink">∨</span>
+												<div class="teamInfo_memberList">
+													<c:forEach items="${i.teamMemberList}" var="stu">
+														<div class="memberItem_line">
+															<input class="tag_member_checkbox" type="checkbox" /> <label class="m_cursor_pointer">${stu.stu_name}</label>
+														</div>
+													</c:forEach>
+												</div>
+											</div>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
 			<div class="selTaskName">发布作业</div>
 			<div>
 				<div class="publish_job_line">
@@ -65,38 +103,13 @@
 						value="${requestScope.selPushTaskInfo.tl_title}" />
 				</div>
 				<div id="publish_job_team" class="publish_job_line">
-					<label>发布到&nbsp;:&nbsp;</label> <span id="publish_teamList">
-						<label class="publish_teamItem">S1E373(34/34)</label>
-					</span> <label id="selectTeamMember" class="selectOperation">(选择)</label>
-					<div id="selTeamArea" class="m_transparencyDarkBody">
-						<div class="selTeamArea">
-							<div class="selTeam_titleMenu">
-								<label class="font_selTeam">选择班级</label> <label
-									class="font_setEnter">完成</label>
-							</div>
-							<c:forEach items="${requestScope.teamGroupList}" var="i">
-								<div>
-									<div class="teamGroup_line tag_teamGroup_line">
-										</span><span>${i.tg_name}</span>
-									</div>
-									<div class="teamInfoAll tag_team_list">
-										<c:choose>
-											<c:when test="${fn:length(i.teamInfoList) == 0}">
-												没有班级
-											</c:when>
-											<c:otherwise>
-												<c:forEach items="${i.teamInfoList }" var="i">
-													<div class="teamInfo_line" data-team_id="${i.team_id }">
-														<input class="tag_team_checkbox" type="checkbox" />${i.team_name }
-													</div>
-												</c:forEach>
-											</c:otherwise>
-										</c:choose>
-									</div>
-								</div>
-							</c:forEach>
+					<label>发布到&nbsp;:&nbsp;</label>
+					<div class="m_display_inline">
+						<div class="m_display_inline" id="publish_teamList">
+							<label class="publish_teamItem">S1E373(34/34)</label>
 						</div>
 					</div>
+					<label id="selectTeamMember" class="selectOperation">(选择)</label>
 				</div>
 				<div class="publish_job_line">
 					<label>要求时间&nbsp;:&nbsp;</label> <span><input type="text"

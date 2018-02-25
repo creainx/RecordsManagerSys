@@ -133,3 +133,7 @@ html, body {
 .m_cursor_pointer{
 	cursor: pointer;
 }
+
+.m_display_inline{
+	display: inline;
+}
