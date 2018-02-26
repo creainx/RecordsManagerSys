@@ -76,8 +76,8 @@
 									<c:otherwise>
 										<c:forEach items="${i.teamInfoList }" var="i">
 											<div class="teamInfo_line" data-team_id="${i.team_id }">
-												<input class="tag_team_checkbox" type="checkbox" /> <label
-													class="m_cursor_pointer tag_team_name">${i.team_name }(${fn:length(i.teamMemberList)})</label>
+												<input class="tag_team_checkbox" type="checkbox" /> 
+												<label class="m_cursor_pointer tag_team_name">${i.team_name }(<span class="selStuCount">0</span>/${fn:length(i.teamMemberList)})</label>
 												<span class="teamMemberUnfoldShrink">∨</span>
 												<div class="teamInfo_memberList">
 													<c:forEach items="${i.teamMemberList}" var="stu">
