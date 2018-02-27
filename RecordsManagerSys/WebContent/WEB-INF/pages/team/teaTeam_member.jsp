@@ -17,7 +17,7 @@
 	<li id="memberMenu_cancel" class="rightClickMenu_item">取消</li>
 </ul>
 
-<div class="selTeamName">${requestScope.resultData.data.team_name }</div>
+<div class="selTeamName">${requestScope.resultData.data.nameFont }</div>
 <div class="team_member_tit">
 	<div class="team_member_titFont">
 		<input type="checkbox" />班级学生

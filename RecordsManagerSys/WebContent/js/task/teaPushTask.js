@@ -1,17 +1,18 @@
 $(document).ready(function() {
 
-	(function() {
+	/*(function() {
 		$(".nav_item_sel").removeClass("nav_item_sel");
 		$("#nav_task").addClass("nav_item_sel");
-	})();
+	})();*/
 	
 	//左边作业列表的方法们
-	function ini_publish_job() {
+	/*function ini_publish_job() {
 		$("#publish_taskName").html();
 		$("#publish_teamList").html();
 		$("#publish_stuList").html();
-	}
-	function showRightClickMenu(e,menuList,item) {
+	}*/
+	
+	/*function showRightClickMenu(e,menuList,item) {
 		hideAllRightMenu();
 		var xx = e.originalEvent.x || e.originalEvent.layerX || 0;
 		var yy = e.originalEvent.y || e.originalEvent.layerY || 0;
@@ -83,17 +84,20 @@ $(document).ready(function() {
 	$("#taskItemMenu__cancel").click(function() {
 		hideTaskItemMenu();
 	});
+
+	*/
+
 	
 	//点击选择发布的班级/学生
-	$("#selectTeamMember").click(function() {
-		$("#selTeamArea").show();
+	$("#show_openSelectTeam").click(function() {
+		$("#openSelectTeam").show();
 	});
 	
 	//点击分组的行进行展开和收缩
-	$(".tag_teamGroup_line").click(function() {
+	$(".tag_groupName_line").click(function() {
 		var item = $(event.currentTarget);
-		if(item.hasClass("tag_teamGroup_line")){
-			var teamList = item.next(".tag_team_list");
+		if(item.hasClass("tag_groupName_line")){
+			var teamList = item.next(".tag_listAll_area");
 
 			if (teamList.css("display") == "block") {
 				teamList.css("display", "none");
@@ -104,77 +108,88 @@ $(document).ready(function() {
 	
 	});
 	
-
-	
-	$(".teamMemberUnfoldShrink").click(function() {
-		var item = $(event.currentTarget);
-		var memberList = item.nextAll(".teamInfo_memberList");
-		if(memberList.css("display") == "none"){
-			item.text("∧");
-			memberList.show();
-		}else{
-			item.text("∨");
-			memberList.hide();
+	//展开与收缩班级学生列表
+	$(".area_line").click(function() {
+		var item = $(event.target);
+		if(item.hasClass("area_line")){
+			var memberList = item.children(".list_lineInfo");
+			if(memberList.css("display") == "none"){
+				item.children(".icon_unfoldShrink").text("∧");
+				memberList.show();
+			}else{
+				item.children(".icon_unfoldShrink").text("∨");
+				memberList.hide();
+			}
 		}
 	});
-	
 	
 	//选中班级checked
 	function teamChange(teamCheckBox){
 		
 		var checkedBool = teamCheckBox.prop("checked");
 		
-		var memberList = teamCheckBox.nextAll(".teamInfo_memberList");
+		var memberList = teamCheckBox.nextAll(".list_lineInfo");
 		
-		memberList.find("input.tag_member_checkbox").prop({"checked": checkedBool});
+		memberList.find("input.tag_stu_checkBox").prop({"checked": checkedBool});
 		
-		var selMemberCountItem = teamCheckBox.nextAll(".tag_team_name").children(".selStuCount");
+		var selMemberCountItem = teamCheckBox.nextAll(".tag_team_nameFont").children(".selStuCount");
 		
 		if(checkedBool){
-			selMemberCountItem.text(memberList.find("input.tag_member_checkbox:checked").length);
+			selMemberCountItem.text(memberList.find("input.tag_stu_checkBox:checked").length);
 		}else{
 			selMemberCountItem.text(0);
 		}
 	}
-	$(".tag_team_checkbox").change(function() {
+	$(".tag_team_checkBox").change(function() {
 		teamChange($(event.currentTarget));
 	});
-	$(".tag_team_name").click(function() {
+	$(".tag_team_nameFont").click(function() {
 		var item = $(event.currentTarget);
-		var checkBox = item.prevAll(".tag_team_checkbox");
+		var checkBox = item.prevAll(".tag_team_checkBox");
 		checkBox.prop({"checked": !(checkBox.prop("checked"))});
 		teamChange(checkBox);
 	});
 	
-	
-	
 	//选中学生checked
 	function memberChange(memberCheckBox){
 		
-		 var memberList = memberCheckBox.parents(".teamInfo_memberList");
+		 var memberList = memberCheckBox.parents(".list_lineInfo");
 		 
 		 var selCount = memberList
-			.find("input.tag_member_checkbox:checked").length;
+			.find("input.tag_stu_checkBox:checked").length;
 		 
-		 var teamCheckBox = memberList.prevAll(".tag_team_checkbox");
+		 var teamCheckBox = memberList.prevAll(".tag_team_checkBox");
 		 if(selCount == 0){
 			 teamCheckBox.prop({"checked": false});
 		 }else{
 			 teamCheckBox.prop({"checked": true});
 		 }
 		 
-		 memberList.prevAll(".tag_team_name").children("span.selStuCount").text(selCount);
+		 memberList.prevAll(".tag_team_nameFont").children("span.selStuCount").text(selCount);
 	}
-	$(".tag_member_checkbox").change(function() {
+	$(".tag_checkBox").change(function() {
 		memberChange($(event.currentTarget));
 	});
-	$(".memberItem_line").click(function() {
+	$(".item_line").click(function() {
 		var item = $(event.target);
-		if(item.hasClass("memberItem_line")){
-			 var checkBox = item.children(".tag_member_checkbox");
+		if(item.hasClass("item_line")){
+			 var checkBox = item.children(".tag_stu_checkBox");
 			 checkBox.prop({"checked": !(checkBox.prop("checked"))});
 			 memberChange(checkBox);
 		}
+	});
+	
+	$("#team_finishEnd").click(function() {
+		var html_selTeamInfo = "";
+		var selTeamList = $("input.tag_team_checkBox:checked");
+		for (var i = 0; i < selTeamList.length; i++) {
+			html_selTeamInfo += selTeamList.eq(i).nextAll(".tag_team_nameFont").text();
+			if(i != (selTeamList.length - 1)){
+				html_selTeamInfo += "、";
+			}
+		}
+		$("#publish_teamItemList").text(html_selTeamInfo);
+		$("#openSelectTeam").hide();
 	});
 
 });

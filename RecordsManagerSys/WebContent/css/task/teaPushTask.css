@@ -143,7 +143,8 @@ body {
 
 .publish_job {
 	width: 780px;
-	float: right;
+	/* float: right; */
+	margin: 0px auto;
 }
 
 .publish_taskName {
@@ -177,7 +178,7 @@ body {
 	margin: 20px;
 }
 
-.publish_teamItem {
+.publish_teamItemList {
 	color: #003399;
 	font-weight: bold;
 	font-size: 14px;
@@ -241,7 +242,7 @@ body {
 	font-weight: bold;
 }
 
-.selTeamArea {
+.midSelectArea {
 	width: 400px;
 	height: 600px;
 	border: 1px white solid;
@@ -256,7 +257,7 @@ body {
 	overflow: auto;
 }
 
-.teamInfoAll {
+.listAll_area {
 	display: none;
 }
 
@@ -269,11 +270,17 @@ body {
 	overflow: hidden;
 }
 
-.font_selTeam {
+.hoverFont {
 	font-size: 22px;
 	float: left;
 	line-height: 50px;
 	margin-left: 8px;
+}
+
+.area_line .nameFont:hover
+	,.item_line:hover .nameFont
+	,.groupName_line .icon_unfoldShrink:hover{
+	color: #FF0033;
 }
 
 .font_setEnter {
@@ -286,7 +293,7 @@ body {
 	margin-right: 8px;
 }
 
-.selTeamArea .teamInfo_line {
+.midSelectArea .area_line {
 	color: #444444;
 	font-size: 15px;
 	font-weight: bold;
@@ -294,12 +301,12 @@ body {
 	border-bottom: 1px #e6ebf1 solid;
 }
 
-/* .selTeamArea .teamInfo_line:hover {
+/* .midSelectArea .groupName_line:hover {
 	background-image: linear-gradient(-180deg, rgb(240, 240, 240) 0%,
 		rgb(250, 250, 250) 90%);
 }
  */
-.selTeamArea .teamGroup_line {
+.midSelectArea .groupName_line {
 	color: #444444;
 	font-size: 15px;
 	font-weight: bold;
@@ -322,31 +329,30 @@ body {
 	display: none;
 }
 
-.teamInfo_line .memberItem_line {
+.list_lineInfo .item_line {
 	color: #444444;
 	font-size: 13px;
 	padding: 8px 0px 0px;
 	margin-left: 20px;
 }
-.teamInfo_line .memberItem_line:not(:last-child) {
+.list_lineInfo .item_line:not(:last-child) {
 	padding: 8px 0px;
 	border-bottom: 1px #e6ebf1 solid;
 }
 
-.teamMemberUnfoldShrink{
-	float: right;
-	font-weight:800;
-	font-size: 13px;
-	padding: 5px 8px 5px 185px;
-	margin-top: -5px;
-}
-
-.teamInfo_memberList {
-	display: none;
-}
-
-
-.teamInfo_line .memberItem_line:hover {
+.list_lineInfo .item_line:hover {
 	background-image: linear-gradient(-180deg, rgb(240, 240, 240) 0%,
 		rgb(250, 250, 250) 90%);
 }
+.icon_unfoldShrink{
+	float: right;
+	font-weight:800;
+	font-size: 13px;
+	padding: 5px 8px 5px 5px;
+	margin-top: -5px;
+}
+
+.list_lineInfo {
+	display: none;
+}
+

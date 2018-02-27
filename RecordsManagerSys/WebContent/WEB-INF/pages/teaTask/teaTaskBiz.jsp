@@ -20,6 +20,7 @@
 	<jsp:include page="/WEB-INF/pages/message/message.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/pages/head/teaHead.jsp"></jsp:include>
 	<div class="mid_main">
+		<%-- 
 		<div class="m_area_partition">
 			<div class="grayTit">作业管理菜单</div>
 			<ul class="m_area_partition m_format_ul m_overHien">
@@ -27,12 +28,13 @@
 					src="${applicationScope.proName}/img/task_logo.png" /> <label>创建新的作业</label>
 				</li>
 			</ul>
-		</div>
+		</div> 
+		--%>
 		<div id="taskGroup_listAll" class="taskGroup_listAll m_area_partition">
 			<ul id="taskGroup_menu" class="rightClickMenu">
-				<li id="" class="rightClickMenu_item">重命名</li>
+				<li id="" class="rightClickMenu_item">添加新作业</li>
 				<li class="rightClickMenu_separateItem"></li>
-				<li id="" class="rightClickMenu_item">添加班级</li>
+				<li id="" class="rightClickMenu_item">重命名</li>
 				<li class="rightClickMenu_separateItem"></li>
 				<li id="" class="rightClickMenu_item">清空列表</li>
 				<li id="" class="rightClickMenu_item">删除分组</li>

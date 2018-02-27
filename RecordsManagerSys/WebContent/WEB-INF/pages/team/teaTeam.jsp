@@ -65,7 +65,7 @@
 								<c:otherwise>
 									<c:forEach items="${i.teamInfoList }" var="i">
 										<li class="li_teamName tag_teamName"
-											data-team_id="${i.team_id }">${i.team_name }</li>
+											data-team_id="${i.team_id }">${i.nameFont }</li>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
